@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Electrocoin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: app shell iz dizajna — bočni izbornik + gornja traka + mreža kartica; dvije stranice (O nama, Djelatnosti) prebacuju se bez ponovnog učitavanja */
+:root{
+  --bg:#ececea; --shell:#f6f6f4; --card:#ffffff; --line:#e8e8e4; --soft:#f1f1ee;
+  --fg:#16170f; --muted:#6f7068; --faint:#b7b8ae;
+  --green:#8cc63f; --green-d:#4f8a12; --yellow:#f2e63a; --orange:#f6a94a;
+  --bar:#e9e9e5; --ink-btn:#16170f; --ink-btn-fg:#fff;
+  --shadow:0 1px 2px rgba(20,22,10,.04),0 8px 24px rgba(20,22,10,.04);
+  --f-ui:"Plus Jakarta Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d0e0b; --shell:#141511; --card:#1b1c17; --line:#2a2b24; --soft:#23241e;
+  --fg:#f1f2ea; --muted:#a2a397; --faint:#5c5d54;
+  --green:#9bd54c; --green-d:#a9dd62; --yellow:#efe34a; --orange:#f5ae55;
+  --bar:#2a2b25; --ink-btn:#f1f2ea; --ink-btn-fg:#16170f; --shadow:none; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0e0b; --shell:#141511; --card:#1b1c17; --line:#2a2b24; --soft:#23241e;
+  --fg:#f1f2ea; --muted:#a2a397; --faint:#5c5d54;
+  --green:#9bd54c; --green-d:#a9dd62; --yellow:#efe34a; --orange:#f5ae55;
+  --bar:#2a2b25; --ink-btn:#f1f2ea; --ink-btn-fg:#16170f; --shadow:none; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:14px;line-height:1.5;padding-block:24px;padding-inline:16px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+a{color:inherit}
+.num{font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+
+.app{max-width:1440px;margin:0 auto;background:var(--shell);border-radius:24px;display:grid;grid-template-columns:232px minmax(0,1fr);box-shadow:var(--shadow)}
+
+/* Bočni izbornik */
+.side{padding:24px 16px;display:flex;flex-direction:column;gap:22px;border-right:1px solid var(--line);position:sticky;top:0;align-self:start;min-height:calc(100vh - 48px)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em;padding:0 8px;text-decoration:none}
+.logo .mark{width:28px;height:28px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:#16170f}
+.logo small{font-weight:500;color:var(--muted)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;font-weight:500;text-decoration:none}
+.nav a:hover{background:var(--soft)}
+.nav a.on{background:var(--card);box-shadow:var(--shadow);position:relative}
+.nav a.on::before{content:"";position:absolute;left:-16px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--fg)}
+.nav svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav .sub{display:flex;flex-direction:column;margin:2px 0 6px 21px;padding-left:18px;border-left:1px solid var(--line)}
+.nav .sub a{padding:5px 10px;font-size:13px;color:var(--muted)}
+.hr{height:1px;background:var(--line);margin:0 8px}
+.pro{margin-top:auto;background:var(--card);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.pro .bolt{width:32px;height:32px;border-radius:50%;background:var(--fg);color:var(--card);display:grid;place-items:center}
+.pro h4{margin:4px 0 0;font-size:15px}
+.pro p{margin:0;color:var(--muted);font-size:12.5px}
+.btn-ink{background:var(--ink-btn);color:var(--ink-btn-fg);border:0;border-radius:10px;padding:10px 14px;font-weight:600;text-decoration:none;text-align:center;display:inline-block}
+
+/* Glavni dio */
+.main{padding:20px 24px 28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.crumb{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
+.crumb b{color:var(--fg);font-weight:600}
+.top .sp{flex:1}
+.tabs{display:none;gap:6px}
+.tabs a{background:var(--card);border-radius:10px;padding:8px 12px;font-weight:600;font-size:13px;text-decoration:none}
+.tabs a.on{background:var(--ink-btn);color:var(--ink-btn-fg)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-weight:600;font-size:13px;text-decoration:none}
+
+.grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr));align-content:start}
+.card{background:var(--card);border-radius:var(--r);padding:20px 22px;min-width:0;box-shadow:var(--shadow)}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s6{grid-column:span 6}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}
+.hd{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ttl{font-weight:600;font-size:16px;margin:0;text-wrap:balance}
+.cap{color:var(--muted);font-size:12.5px}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:clamp(28px,3.4vw,42px);line-height:1.08;letter-spacing:-.025em;margin:8px 0 12px;font-weight:700;text-wrap:balance;max-width:20ch}
+.lead{font-size:15.5px;color:var(--muted);max-width:62ch;margin:0}
+p{max-width:68ch}
+sup a{font-size:10px;color:var(--green-d);text-decoration:none;font-weight:700;margin-left:1px}
+sup a:hover{text-decoration:underline}
+sup+sup::before{content:",";font-size:10px;color:var(--muted)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;align-items:end}
+.hero .art{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;align-self:stretch;align-content:end;max-width:260px;justify-self:end;width:100%}
+.hero .art i{aspect-ratio:1;border-radius:5px;background:var(--green);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 2px,transparent 2px 6px)}
+.hero .art i.y{background-color:var(--yellow)}.hero .art i.o{background-color:var(--orange)}.hero .art i.l{opacity:.35}.hero .art i.e{background:transparent}
+
+.kpi .big{font-size:30px;font-weight:600;letter-spacing:-.02em;margin:6px 0 2px;line-height:1.1}
+.kpi .up{color:var(--green-d);font-size:12px;font-weight:600}
+
+/* Grafovi */
+.chart{width:100%;height:auto;display:block}
+.chart text{font-size:11px;fill:var(--muted);font-family:var(--f-ui)}
+.chart text.v{fill:var(--fg);font-weight:600;font-size:12px}
+.chart .gl{stroke:var(--line);stroke-dasharray:3 4}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+.note{font-size:12px;color:var(--muted);margin:10px 0 0}
+
+/* Vremenska crta */
+.tl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:64px 18px minmax(0,1fr);gap:12px;padding-bottom:18px;position:relative}
+.tl .yr{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.tl .dot{width:12px;height:12px;border-radius:4px;background:var(--bar);margin-top:5px;position:relative;z-index:1}
+.tl li.k .dot{background:var(--green)}
+.tl li.m .dot{background:var(--yellow)}
+.tl li::after{content:"";position:absolute;left:calc(64px + 12px + 5px);top:20px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl h3{font-size:14px;margin:0 0 2px;font-weight:600}
+.tl p{margin:0;color:var(--muted);font-size:13px}
+
+/* Ljudi */
+.people{display:grid;gap:12px}
+.person{display:flex;gap:12px;align-items:flex-start}
+.av{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:700;font-size:13px;color:#16170f;flex:none}
+.person b{display:block;font-size:14px}
+.person span{color:var(--muted);font-size:12.5px}
+
+/* Video */
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px}
+.video{display:flex;flex-direction:column;gap:8px;text-decoration:none;border-radius:12px}
+.video .th{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:var(--soft)}
+.video .th img{width:100%;height:100%;object-fit:cover;display:block}
+.video .th::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(22,23,15,.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7v10l8-5z' fill='%23fff'/%3E%3C/svg%3E") center/22px no-repeat}
+.video:hover .th::after{background-color:var(--green)}
+.video b{font-size:13.5px;font-weight:600;line-height:1.35}
+.video span{font-size:12px;color:var(--muted)}
+blockquote{margin:14px 0 0;padding:14px 16px;border-radius:12px;background:var(--soft);font-size:14px;max-width:none}
+blockquote cite{display:block;font-style:normal;color:var(--muted);font-size:12px;margin-top:6px}
+
+/* Tablica */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;color:var(--muted);font-size:12px}
+.neg{color:var(--orange)}.pos{color:var(--green-d)}
+
+dl.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:14px 0 0;font-size:13px}
+dl.facts dt{color:var(--muted)}
+dl.facts dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+
+/* Djelatnosti */
+.svc-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.svc-ico svg{width:20px;height:20px;stroke:#16170f;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc-h{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:13.5px}
+.ul li{display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px}
+.ul li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--green);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:12px;font-weight:600;font-family:var(--f-mono);background:var(--soft)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.step{background:var(--soft);border-radius:12px;padding:12px}
+.step b{font-family:var(--f-mono);font-size:11px;color:var(--muted);display:block}
+.step span{font-size:13px;font-weight:500}
+.partners{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:14px}
+.partner{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.partner b{font-size:14px}
+.partner .yr{font-family:var(--f-mono);font-size:11px;color:var(--green-d)}
+.partner span{font-size:12.5px;color:var(--muted)}
+.meter{height:12px;border-radius:4px;background:var(--soft);overflow:hidden;margin-top:6px}
+.meter i{display:block;height:100%;background:var(--green);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.25) 0 2px,transparent 2px 6px)}
+.eea{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.eea span{font-family:var(--f-mono);font-size:11px;padding:3px 6px;border-radius:5px;background:var(--green);color:#16170f}
+
+/* Izvori */
+.src{columns:2 320px;column-gap:28px;margin:12px 0 0;padding-left:22px;font-size:12.5px;color:var(--muted)}
+.src li{break-inside:avoid;margin-bottom:6px}
+.src a{color:var(--fg);text-decoration-color:var(--faint)}
+.src li.hl{background:var(--soft);border-radius:4px}
+
+@media (max-width:1100px){
+  .s8,.s7,.s6,.s5,.s4{grid-column:span 12}
+  .s3{grid-column:span 6}
+}
+@media (max-width:900px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{display:none}
+  .tabs{display:flex}
+  .main{padding:16px}
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero .art{display:none}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  body{padding-inline:8px;padding-block:8px}
+  .s3{grid-column:span 12}
+  .crumb{display:none}
+  .card{padding:16px}
+  .tl li{grid-template-columns:48px 14px minmax(0,1fr);gap:10px}
+  .tl li::after{left:calc(48px + 10px + 5px)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <a class="logo" href="#onama"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>Electrocoin<small>.eu</small></a>
+    <nav class="nav" aria-label="Stranice">
+      <a href="#onama" data-page="onama"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>O nama</a>
+      <div class="sub">
+        <a href="#onama" data-jump="pocetak">Početak</a>
+        <a href="#onama" data-jump="razvoj">Razvoj kroz godine</a>
+        <a href="#onama" data-jump="tim">Tim i vlasnici</a>
+        <a href="#onama" data-jump="video">Video i intervjui</a>
+      </div>
+      <a href="#usluge" data-page="usluge"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Djelatnosti</a>
+      <div class="sub">
+        <a href="#usluge" data-jump="mjenjacnica">Kripto mjenjačnica</a>
+        <a href="#usluge" data-jump="paycek">PayCek</a>
+        <a href="#usluge" data-jump="gotovina">Gotovina i pošta</a>
+        <a href="#usluge" data-jump="b2b">Za banke</a>
+        <a href="#usluge" data-jump="licenca">MiCA licenca</a>
+      </div>
+    </nav>
+    <div class="hr"></div>
+    <nav class="nav" aria-label="Ostalo">
+      <a href="#izvori"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>Izvori</a>
+    </nav>
+    <div class="pro">
+      <span class="bolt"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+      <h4>Prva MiCA licenca u Hrvatskoj</h4>
+      <p>Odobrenje HANFA-e od 9. travnja 2026.</p>
+      <a class="btn-ink" href="https://electrocoin.eu/hr" target="_blank" rel="noopener">Otvori račun</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <div class="crumb">Electrocoin.eu <span>/</span> <b id="crumb">O nama</b></div>
+      <nav class="tabs" aria-label="Stranice"><a href="#onama" data-page="onama">O nama</a><a href="#usluge" data-page="usluge">Djelatnosti</a></nav>
+      <span class="sp"></span>
+      <a class="pill" href="https://paycek.io/" target="_blank" rel="noopener">PayCek ↗</a>
+      <a class="btn-ink" href="https://electrocoin.eu/hr" target="_blank" rel="noopener">Kupi kripto</a>
+    </header>
+
+    <!-- ============ STRANICA 1: O NAMA ============ -->
+    <div class="grid" id="p-onama">
+      <section class="card s12" id="pocetak">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">O nama · Zagreb, od 2014.</div>
+            <h1>Prva hrvatska kripto mjenjačnica, danas prva s MiCA licencom</h1>
+            <p class="lead">Electrocoin d.o.o. osnovan je 3. veljače 2014. u Zagrebu<sup><a href="#s7">7</a></sup> kao jedan od prvih fintech startupa u Hrvatskoj usmjerenih na kriptovalute<sup><a href="#s9">9</a></sup>. Iz hobi projekta s 2.500 eura ušteđevine<sup><a href="#s10">10</a></sup> izrastao je u najveću kripto tvrtku u zemlji<sup><a href="#s12">12</a></sup> i prvog pružatelja usluga kriptoimovine kojeg je HANFA licencirala prema europskoj uredbi MiCA<sup><a href="#s1">1</a></sup>.</p>
+          </div>
+          <div class="art" aria-hidden="true" id="art"></div>
+        </div>
+      </section>
+
+      <section class="card s3 kpi"><div class="cap">Osnovano</div><div class="big num">2014.</div><div class="up">Ilica 15, Zagreb<sup><a href="#s8">8</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Klijenata</div><div class="big num">40.000+</div><div class="up">250.000+ transakcija<sup><a href="#s21">21</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Zaposlenih (2025.)</div><div class="big num">28</div><div class="up">7 zaposlenih 2017.<sup><a href="#s10">10</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">MiCA putovnica</div><div class="big num">30 država</div><div class="up">cijeli EGP<sup><a href="#s6">6</a></sup></div></section>
+
+      <section class="card s7" id="razvoj">
+        <div class="hd"><div><p class="ttl">Razvoj kroz godine</p><div class="cap">Ključni trenuci od ideje do licence</div></div>
+          <div class="legend"><span><i class="sw" style="background:var(--green)"></i>Prekretnica</span><span><i class="sw" style="background:var(--yellow)"></i>Regulacija</span></div></div>
+        <ol class="tl">
+          <li><span class="yr">2013.</span><span class="dot"></span><div><h3>Ideja iz frustracije</h3><p>Nikola Škorić, inženjer s diplomom FER-a iz kriptografije koji je radio u nuklearnoj industriji, pokušava kupiti bitcoina za 100 kuna. Postupak u Hrvatskoj je spor i skup, s maržama oko 20%.<sup><a href="#s9">9</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s12">12</a></sup></p></div></li>
+          <li class="k"><span class="yr">2014.</span><span class="dot"></span><div><h3>Osnivanje tvrtke</h3><p>Škorić i partner Marin Maržić registriraju Electrocoin d.o.o. 3. veljače 2014. Škorić je pisao svim regulatorima, uključujući HNB, da pokreće kripto tvrtku, ali odgovor nije stigao.<sup><a href="#s7">7</a></sup><sup><a href="#s24">24</a></sup><sup><a href="#s11">11</a></sup></p></div></li>
+          <li class="k"><span class="yr">2015.</span><span class="dot"></span><div><h3>Izlazak na tržište EU</h3><p>Online mjenjačnica pod imenom bitcoin-mjenjacnica.hr počinje služiti klijente iz cijele Europske unije.<sup><a href="#s9">9</a></sup></p></div></li>
+          <li><span class="yr">2017.</span><span class="dot"></span><div><h3>Puno radno vrijeme</h3><p>Tijekom kripto buma 2017. Škorić napušta posao u nuklearnoj elektrani. Tvrtka tada ima sedam zaposlenih.<sup><a href="#s10">10</a></sup></p></div></li>
+          <li class="k"><span class="yr">2018.</span><span class="dot"></span><div><h3>PayCek i 30 milijuna eura prometa</h3><p>Tvrtka razvija vlastiti procesor kripto plaćanja PayCek, osniva prodajni tim i bilježi promet od gotovo 30 milijuna eura uz kvartalni rast od 100%.<sup><a href="#s11">11</a></sup><sup><a href="#s14">14</a></sup><sup><a href="#s24">24</a></sup></p></div></li>
+          <li class="k"><span class="yr">2019.</span><span class="dot"></span><div><h3>Hrvatska pošta</h3><p>Nakon pilota u Zadru, od 9. prosinca 2019. kriptovalute se mogu zamijeniti za gotovinu u 55 poštanskih ureda u svim županijama.<sup><a href="#s17">17</a></sup></p></div></li>
+          <li class="m"><span class="yr">2020.</span><span class="dot"></span><div><h3>Obveznik sprječavanja pranja novca</h3><p>Od 1. siječnja 2020. Electrocoin je regulirani subjekt prema Zakonu o sprječavanju pranja novca. Promet te godine iznosi 330 milijuna kuna.<sup><a href="#s9">9</a></sup></p></div></li>
+          <li class="k"><span class="yr">2021.</span><span class="dot"></span><div><h3>Tifon i Konzum</h3><p>Plaćanje kriptovalutama uvodi se na 46 Tifonovih postaja (veljača) i u Konzumovoj web trgovini (prosinac), prvom trgovačkom lancu u Hrvatskoj s tom opcijom. Prihod tvrtke prelazi 545 milijuna kuna.<sup><a href="#s15">15</a></sup><sup><a href="#s16">16</a></sup><sup><a href="#s13">13</a></sup></p></div></li>
+          <li class="k"><span class="yr">2022.</span><span class="dot"></span><div><h3>400 trgovaca i prvi osiguravatelj</h3><p>Kripto u Hrvatskoj prima više od 400 trgovaca na preko 2.000 POS uređaja. LAQO, digitalni brend Croatia osiguranja, uvodi plaćanje police kriptom preko PayCeka.<sup><a href="#s24">24</a></sup><sup><a href="#s19">19</a></sup></p></div></li>
+          <li><span class="yr">2023.</span><span class="dot"></span><div><h3>Money Motion</h3><p>Škorić pokreće i vodi fintech konferenciju Money Motion u Zagrebu, koja 2025. okuplja više od 2.500 posjetitelja.<sup><a href="#s23">23</a></sup></p></div></li>
+          <li><span class="yr">2024.</span><span class="dot"></span><div><h3>Edukacija države</h3><p>Electrocoin educira državne službenike o kriptoimovini i blockchainu.<sup><a href="#s13">13</a></sup></p></div></li>
+          <li class="m"><span class="yr">2026.</span><span class="dot"></span><div><h3>Prva MiCA licenca u Hrvatskoj</h3><p>Uprava HANFA-e 9. travnja 2026. odobrava Electrocoinu rad kao pružatelju usluga kriptoimovine (CASP). Tvrtka je prvi upis u registar, a usluge putovnicom nudi u 30 država EGP-a, među njima i u Francuskoj od svibnja 2026.<sup><a href="#s1">1</a></sup><sup><a href="#s5">5</a></sup><sup><a href="#s6">6</a></sup></p></div></li>
+        </ol>
+      </section>
+
+      <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
+        <section class="card">
+          <div class="hd"><div><p class="ttl">Promet kroz godine</p><div class="cap">Milijuni eura, volumen razmijenjene imovine</div></div></div>
+          <svg class="chart" id="ch-turnover" viewBox="0 0 400 220" role="img" aria-label="Promet: 2018. oko 30 milijuna eura, 2020. 43,8 milijuna, 2021. 72,3 milijuna"></svg>
+          <p class="note">2020. i 2021. preračunato iz kuna po tečaju 7,5345. Izvori: <a href="#s14">14</a>, <a href="#s9">9</a>, <a href="#s13">13</a>.</p>
+        </section>
+        <section class="card">
+          <div class="hd"><div><p class="ttl">Broj zaposlenih</p><div class="cap">Od sedam ljudi do tima od 28</div></div></div>
+          <svg class="chart" id="ch-staff" viewBox="0 0 400 180" role="img" aria-label="Zaposleni: 2017. 7, 2021. 18, 2022. 28, 2023. 29, 2024. 27, 2025. 28"></svg>
+          <p class="note">Izvori: <a href="#s10">10</a>, <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s7">7</a>.</p>
+        </section>
+        <section class="card">
+          <p class="ttl">Klijenti i transakcije</p>
+          <div style="display:grid;gap:12px;margin-top:12px">
+            <div><div class="hd cap"><span>Klijenti 2021. → 2026.</span><b class="num" style="color:var(--fg)">25.000 → 40.000+</b></div><div class="meter"><i style="width:62.5%"></i></div></div>
+            <div><div class="hd cap"><span>Transakcije 2021. → 2026.</span><b class="num" style="color:var(--fg)">110.000 → 250.000+</b></div><div class="meter"><i style="width:44%;background-color:var(--yellow)"></i></div></div>
+          </div>
+          <p class="note">Traka pokazuje brojku iz 2021. kao udio današnje. Izvori: <a href="#s9">9</a>, <a href="#s21">21</a>.</p>
+        </section>
+      </div>
+
+      <section class="card s6" id="tim">
+        <p class="ttl">Tim i vlasnici</p>
+        <div class="cap">Prema sudskom registru i javnim profilima</div>
+        <div class="people" style="margin-top:14px">
+          <div class="person"><span class="av" style="background:var(--green)">NŠ</span><div><b>Nikola Škorić</b><span>Suosnivač, direktor i suvlasnik. Prije Electrocoina sedam godina u nuklearnoj industriji; kriptografijom se bavi od 2011. Suosnivač Udruge za blockchain i kriptovalute (UBIK) i predsjedatelj konferencije Money Motion.<sup><a href="#s9">9</a></sup><sup><a href="#s23">23</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--yellow)">MM</span><div><b>Marin Maržić</b><span>Suosnivač, COO, prokurist i suvlasnik. Vodio razvoj korisničkog iskustva i sigurnosti platforme.<sup><a href="#s8">8</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--orange)">IP</span><div><b>Ivan Pekarik</b><span>Voditelj operacija.<sup><a href="#s22">22</a></sup></span></div></div>
+        </div>
+        <p class="note">Treći vlasnik je EC Production Projects d.o.o.<sup><a href="#s8">8</a></sup></p>
+        <blockquote>„Trgovci nikada nisu izloženi kriptovalutama niti njihovoj volatilnosti.“<cite>Nikola Škorić za JaTrgovac, 2022.<sup><a href="#s24">24</a></sup></cite></blockquote>
+      </section>
+
+      <section class="card s6">
+        <p class="ttl">Podaci o tvrtki</p>
+        <dl class="facts">
+          <dt>Pravni naziv</dt><dd>ELECTROCOIN d.o.o. za usluge</dd>
+          <dt>Sjedište</dt><dd>Ilica 15, 10000 Zagreb</dd>
+          <dt>OIB</dt><dd class="num">45841695639</dd>
+          <dt>MB</dt><dd class="num">04165985</dd>
+          <dt>LEI</dt><dd class="num">747800R015JVW1T4WZ71</dd>
+          <dt>Djelatnost</dt><dd>66.19 Ostale pomoćne djelatnosti kod financijskih usluga</dd>
+          <dt>Nadzor</dt><dd>HANFA (MiCA CASP od 2026.)</dd>
+        </dl>
+        <div class="tw" style="margin-top:16px">
+          <table>
+            <thead><tr><th>Godina</th><th>Prihod</th><th>Dobit / gubitak</th><th>Kapital</th><th>Zaposleni</th></tr></thead>
+            <tbody>
+              <tr><td>2023.</td><td>€1.281.289</td><td class="neg">−€183.770</td><td>€1.122.705</td><td>29</td></tr>
+              <tr><td>2024.</td><td>€1.342.074</td><td class="pos">€18.217</td><td>€1.140.922</td><td>27</td></tr>
+              <tr><td>2025.</td><td>€1.178.871</td><td class="neg">−€161.107</td><td>€836.766</td><td>28</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Iz službenih financijskih izvještaja<sup><a href="#s7">7</a></sup>. Prihod u izvještajima je znatno manji od prometa jer, kako zaključujem, uključuje samo zaradu tvrtke, a ne vrijednost razmijenjene imovine.</p>
+      </section>
+
+      <section class="card s12" id="video">
+        <div class="hd"><div><p class="ttl">Video i intervjui</p><div class="cap">Nikola Škorić o Electrocoinu, kriptovalutama i regulaciji</div></div><a class="pill" href="https://www.youtube.com/results?search_query=Nikola+%C5%A0kori%C4%87+Electrocoin" target="_blank" rel="noopener">Svi videi ↗</a></div>
+        <div class="videos" id="videos"></div>
+      </section>
+    </div>
+
+    <!-- ============ STRANICA 2: DJELATNOSTI ============ -->
+    <div class="grid" id="p-usluge" hidden>
+      <section class="card s12">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">Djelatnosti · pet područja</div>
+            <h1>Kupnja, prodaja i plaćanje kriptovalutama, od aplikacije do blagajne</h1>
+            <p class="lead">Electrocoin je krenuo kao online bitcoin mjenjačnica, a danas povezuje kriptovalute s cijelim gospodarstvom: građanima nudi kupnju i prodaju više od 60 kriptovaluta, trgovcima naplatu preko PayCeka, a bankama i mjenjačnicama gotovu infrastrukturu<sup><a href="#s20">20</a></sup><sup><a href="#s11">11</a></sup>.</p>
+          </div>
+          <div class="art" aria-hidden="true" id="art2"></div>
+        </div>
+      </section>
+
+      <section class="card s3 kpi"><div class="cap">Kriptovaluta</div><div class="big num">60+</div><div class="up">BTC, ETH, SOL, USDC…<sup><a href="#s20">20</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Trgovaca s kripto naplatom</div><div class="big num">400+</div><div class="up">na 2.000+ POS uređaja<sup><a href="#s24">24</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Isplata na IBAN</div><div class="big num">15–60 min</div><div class="up">ovisno o banci<sup><a href="#s20">20</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Podrška</div><div class="big num">24/7</div><div class="up">na hrvatskom jeziku<sup><a href="#s20">20</a></sup></div></section>
+
+      <section class="card s7" id="mjenjacnica">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><div><p class="ttl">1. Kripto mjenjačnica za građane</p><div class="cap">Platforma electrocoin.eu, nekad bitcoin-mjenjacnica.hr</div></div></div>
+        <p>Jezgra poslovanja od 2014. Korisnik kupuje, prodaje i mijenja kriptovalute bez upravljanja privatnim ključevima, jer Electrocoin čuva imovinu u ime klijenta, što MiCA licenca izričito dopušta<sup><a href="#s1">1</a></sup><sup><a href="#s20">20</a></sup>. Tvrtka je platformu opisala kao „jednostavniju verziju Coinbasea“<sup><a href="#s10">10</a></sup>.</p>
+        <ul class="ul">
+          <li><span><b>Fiksna cijena unaprijed.</b> Tečaj se zaključava pri pokretanju naloga i vrijedi dok novac ne stigne, za razliku od većine burzi.<sup><a href="#s9">9</a></sup><sup><a href="#s10">10</a></sup></span></li>
+          <li><span><b>Načini plaćanja:</b> bankovni račun, kartica, gotovina ili prijenos iz drugog kripto novčanika.<sup><a href="#s20">20</a></sup></span></li>
+          <li><span><b>Isplata u eurima</b> na bilo koji IBAN uz potvrdu kodom iz e-pošte.<sup><a href="#s20">20</a></sup></span></li>
+          <li><span><b>Plaćanje računa kriptom:</b> skenira se barkod s uplatnice, a iznos se pretvara u eure u trenutku plaćanja.<sup><a href="#s20">20</a></sup></span></li>
+          <li><span><b>Porezna evidencija:</b> zapis svake transakcije (datum, iznos, tečaj) i godišnji izvještaj, usklađeno s pravilima DAC8 i CARF od 2026.<sup><a href="#s20">20</a></sup></span></li>
+          <li><span><b>Podrška</b> uživo 24/7 preko WhatsAppa, Telegrama i Vibera.<sup><a href="#s20">20</a></sup></span></li>
+        </ul>
+        <div class="steps">
+          <div class="step"><b>KORAK 1</b><span>E-pošta i lozinka</span></div>
+          <div class="step"><b>KORAK 2</b><span>Fotografija osobne iskaznice</span></div>
+          <div class="step"><b>KORAK 3</b><span>Video provjera od 30 sekundi</span></div>
+          <div class="step"><b>KORAK 4</b><span>Digitalni potpis</span></div>
+        </div>
+        <p class="note">Registracija traje oko 8 minuta prema testu Projekta Hrvatska<sup><a href="#s20">20</a></sup>. Electrocoin ne nudi Monero ni Bitcoin SV iz reputacijskih razloga<sup><a href="#s9">9</a></sup>.</p>
+      </section>
+
+      <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
+        <section class="card">
+          <p class="ttl">Struktura trgovanja</p>
+          <div class="cap">Bitcoin čini više od 80% volumena (2021.)</div>
+          <svg class="chart" id="ch-btc" viewBox="0 0 400 70" role="img" aria-label="Bitcoin više od 80 posto volumena, ostale kriptovalute manje od 20 posto"></svg>
+          <div class="legend" style="margin-top:6px"><span><i class="sw" style="background:var(--green)"></i>Bitcoin &gt;80%</span><span><i class="sw" style="background:var(--bar)"></i>Ostale &lt;20%</span></div>
+          <p class="note">Izvor: <a href="#s9">9</a>.</p>
+        </section>
+        <section class="card">
+          <p class="ttl">Rast ponude kriptovaluta</p>
+          <div class="cap">Broj kriptovaluta na mjenjačnici</div>
+          <svg class="chart" id="ch-coins" viewBox="0 0 400 150" role="img" aria-label="Kriptovalute na mjenjačnici: 2021. oko 30, 2022. 35, 2026. više od 60"></svg>
+          <p class="note">Izvori: <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s20">20</a>.</p>
+        </section>
+        <section class="card">
+          <p class="ttl">Odakle dolaze klijenti</p>
+          <div class="cap">Udio prometa po tržištu</div>
+          <div style="display:grid;gap:10px;margin-top:12px">
+            <div><div class="hd cap"><span>Iz EU uključujući Hrvatsku (2021.)</span><b style="color:var(--fg)">~95%</b></div><div class="meter"><i style="width:95%"></i></div></div>
+            <div><div class="hd cap"><span>Hrvatska prema ostatku EU</span><b style="color:var(--fg)">50 / 50</b></div><div class="meter"><i style="width:50%;background-color:var(--yellow)"></i></div></div>
+          </div>
+          <p class="note">Izvori: <a href="#s9">9</a>, <a href="#s10">10</a>.</p>
+        </section>
+      </div>
+
+      <section class="card s12" id="paycek">
+        <div class="hd">
+          <div class="svc-h"><span class="svc-ico" style="background:var(--yellow)"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span><div><p class="ttl">2. PayCek: naplata kriptovalutama za trgovce</p><div class="cap">Prvi hrvatski procesor kripto plaćanja<sup><a href="#s16">16</a></sup></div></div></div>
+          <a class="pill" href="https://paycek.io/" target="_blank" rel="noopener">paycek.io ↗</a>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="s5" style="min-width:0">
+            <p style="margin-top:0">Kupac plaća u kriptovaluti, a trgovac dobiva eure. Račun se izdaje u eurima i odmah konvertira, a PayCek drži fiksni tečaj dovoljno dugo da se transakcija završi<sup><a href="#s14">14</a></sup><sup><a href="#s16">16</a></sup>. Electrocoin je pravni posrednik u svakoj transakciji, pa trgovac nikad ne drži kriptovalutu<sup><a href="#s24">24</a></sup>. Trgovac ne plaća naknadu: trošak od oko 2–2,5% snosi kupac ili se dijeli<sup><a href="#s9">9</a></sup><sup><a href="#s14">14</a></sup>.</p>
+            <ul class="ul">
+              <li><span>Besplatni web POS widget i besplatno postavljanje</span></li>
+              <li><span>Dodaci za web trgovine i API za postojeće sustave</span></li>
+              <li><span>Integracija u velike hrvatske blagajničke sustave</span></li>
+              <li><span>Beskontaktno plaćanje i primanje donacija</span></li>
+              <li><span>Oko 59 kriptovaluta i stablecoina (16 u 2022.)</span></li>
+            </ul>
+            <div class="steps" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+              <div class="step"><b>1</b><span>Kupac bira kriptovalutu na blagajni</span></div>
+              <div class="step"><b>2</b><span>Prikazuje se cijena i QR kod</span></div>
+              <div class="step"><b>3</b><span>Plaćanje iz osobnog novčanika</span></div>
+              <div class="step"><b>4</b><span>Trgovac prima eure</span></div>
+            </div>
+            <p class="note">Postupak prema opisu Konzumove naplate<sup><a href="#s16">16</a></sup>. Značajke prema<sup><a href="#s14">14</a></sup><sup><a href="#s24">24</a></sup>.</p>
+          </div>
+          <div class="s7" style="min-width:0">
+            <p class="eyebrow" style="margin:0">Partneri koji primaju kripto preko PayCeka</p>
+            <div class="partners">
+              <div class="partner"><span class="yr">od 2019.</span><b>Hrvatska pošta</b><span>Kripto u 55 ureda, kripto marke plative samo kriptom<sup><a href="#s15">15</a></sup><sup><a href="#s18">18</a></sup></span></div>
+              <div class="partner"><span class="yr">od 2021.</span><b>Tifon</b><span>Gorivo i proizvodi na svih 46 postaja<sup><a href="#s15">15</a></sup></span></div>
+              <div class="partner"><span class="yr">od 2021.</span><b>Konzum</b><span>Web trgovina s oko 12.000 proizvoda<sup><a href="#s16">16</a></sup></span></div>
+              <div class="partner"><span class="yr">od 2022.</span><b>LAQO / Croatia osiguranje</b><span>Obvezno i kasko auto osiguranje<sup><a href="#s19">19</a></sup></span></div>
+              <div class="partner"><span class="yr">komunalije</span><b>Grad Sveta Nedelja</b><span>Plaćanje komunalnih računa<sup><a href="#s15">15</a></sup></span></div>
+              <div class="partner"><span class="yr">maloprodaja</span><b>iNovine, Bazaar.hr</b><span>Kiosci na 278 lokacija i web trgovina<sup><a href="#s14">14</a></sup><sup><a href="#s24">24</a></sup></span></div>
+              <div class="partner"><span class="yr">web</span><b>mi.hr, Greyp, Marvie Hotel</b><span>Elektronika, e-bicikli, smještaj<sup><a href="#s14">14</a></sup></span></div>
+              <div class="partner"><span class="yr">donacije</span><b>Crveni križ, SOS Dječje selo</b><span>Uz Plavi telefon i Klikeraj<sup><a href="#s14">14</a></sup></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card s6" id="gotovina">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v9h14v-9M9 19v-5h6v5"/></svg></span><div><p class="ttl">3. Gotovina, pošta i mjenjačnice</p><div class="cap">Kripto za one koji radije plaćaju na šalteru</div></div></div>
+        <p>Electrocoin je infrastruktura iza kripto usluga Hrvatske pošte. Od prosinca 2019. kriptovalute se mogu prodati za gotovinu, a od studenog 2021. i kupiti u više od 50 poštanskih ureda u svim županijama, za 11 kriptovaluta<sup><a href="#s17">17</a></sup><sup><a href="#s18">18</a></sup>. Ukupno je 2022. kripto bilo moguće kupiti ili prodati na više od 400 fizičkih lokacija<sup><a href="#s24">24</a></sup>.</p>
+        <ul class="ul">
+          <li><span>Usluga za klasične mjenjačnice, koje preko Electrocoina prodaju kripto za gotovinu<sup><a href="#s10">10</a></sup></span></li>
+          <li><span>Partnerstvo s lancem mjenjačnica Exclusive Change, koji provodi KYC i AML provjere na šalteru<sup><a href="#s11">11</a></sup></span></li>
+          <li><span>Tri izdanja kripto maraka Hrvatske pošte (3.000 komada) plativa samo kriptovalutom, rasprodana<sup><a href="#s18">18</a></sup></span></li>
+        </ul>
+      </section>
+
+      <section class="card s6" id="b2b">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M19 21V10M9 21v-7M15 21v-7M3 10l9-6 9 6"/></svg></span><div><p class="ttl">4. Infrastruktura za banke i platne institucije</p><div class="cap">Smjer rasta za idućih pet godina</div></div></div>
+        <p>Electrocoin razvija modul za trgovanje kriptovalutama koji banke ugrađuju u svoje aplikacije, po uzoru na Revolutovu ponudu. Interes banaka porastao je nakon konferencije Money Motion 2024.<sup><a href="#s11">11</a></sup> Škorić bilježi sve veći interes trgovaca, pružatelja platnih usluga, banaka i fintech tvrtki za kripto naplatu<sup><a href="#s23">23</a></sup>.</p>
+        <ul class="ul">
+          <li><span>B2B rast u jugoistočnoj i srednjoj Europi, uz partnere u Sloveniji, Bosni i Hercegovini i Mađarskoj<sup><a href="#s11">11</a></sup></span></li>
+          <li><span>Stablecoini za platne institucije, za koje tvrtka očekuje sve veću primjenu<sup><a href="#s11">11</a></sup></span></li>
+          <li><span>MiCA licenca otvara vrata bankama i institucionalnim ulagačima<sup><a href="#s3">3</a></sup><sup><a href="#s12">12</a></sup></span></li>
+        </ul>
+      </section>
+
+      <section class="card s7" id="licenca">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--yellow)"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><p class="ttl">5. Regulacija: MiCA licenca HANFA-e</p><div class="cap">Prvi upis u registar pružatelja usluga kriptoimovine</div></div></div>
+        <p>Do 2026. Electrocoin je poslovao kao registrirani pružatelj usluga virtualne imovine (VASP) prema zakonu o sprječavanju pranja novca. Uprava HANFA-e 9. travnja 2026. odobrila mu je rad prema uredbi (EU) 2023/1114, kao prvoj tvrtki u Hrvatskoj<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup>. Ostali VASP-ovi moraju licencu ishoditi do 1. srpnja 2026.<sup><a href="#s1">1</a></sup>; od 16 registriranih tvrtki na tržištu ih je ostalo sedam<sup><a href="#s12">12</a></sup>.</p>
+        <p class="eyebrow" style="margin:14px 0 0">Odobrene usluge</p>
+        <ul class="ul">
+          <li><span>Zamjena kriptoimovine za novčana sredstva</span></li>
+          <li><span>Zamjena kriptoimovine za drugu kriptoimovinu</span></li>
+          <li><span>Pohrana i administriranje kriptoimovine u ime klijenata</span></li>
+        </ul>
+        <p class="eyebrow" style="margin:14px 0 0">Putovnica u 30 država EGP-a<sup><a href="#s6">6</a></sup></p>
+        <div class="eea" id="eea"></div>
+      </section>
+
+      <section class="card s5">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></span><div><p class="ttl">Edukacija i zajednica</p><div class="cap">Uz poslovne usluge</div></div></div>
+        <ul class="ul">
+          <li><span>Savjetovanje i edukacija o kriptovalutama i blockchainu<sup><a href="#s22">22</a></sup></span></li>
+          <li><span>Edukacija državnih službenika o kriptoimovini (2024.)<sup><a href="#s13">13</a></sup></span></li>
+          <li><span>Suosnivanje Udruge za blockchain i kriptovalute (UBIK)<sup><a href="#s24">24</a></sup></span></li>
+          <li><span>Fintech konferencija Money Motion na Zagrebačkom velesajmu, od 2023.<sup><a href="#s23">23</a></sup><sup><a href="#s22">22</a></sup></span></li>
+          <li><span>Paneli s državnim institucijama i zalaganje za jednostavnije licenciranje fintech tvrtki<sup><a href="#s11">11</a></sup><sup><a href="#s24">24</a></sup></span></li>
+        </ul>
+        <p class="note">Dugoročni cilj tvrtke je kripto u svim područjima gospodarstva, s osiguranjem kao „završnim ciljem“; bankarstvo nije u planu<sup><a href="#s10">10</a></sup>.</p>
+      </section>
+    </div>
+
+    <section class="card" id="izvori">
+      <p class="ttl">Izvori</p>
+      <div class="cap">Brojke u tekstu označene su brojem izvora. Prikupljeno 9. listopada 2026.</div>
+      <ol class="src">
+        <li id="s1"><a href="https://www.hanfa.hr/news/hanfa-board-meeting-electrocoin-doo-becomes-the-first-company-to-obtain-hanfa-s-authorisation-to-operate-in-accordance-with-mica/" target="_blank" rel="noopener">HANFA: Electrocoin prvi dobiva odobrenje prema MiCA (9. 4. 2026.)</a></li>
+        <li id="s2"><a href="https://lidermedia.hr/tvrtke-i-trzista/electrocoin-prva-mica-kriptolicenca-hrvatska/" target="_blank" rel="noopener">Lider: Electrocoin dobio prvu MiCA kriptolicencu (9. 4. 2026.)</a></li>
+        <li id="s3"><a href="https://hr.bloombergadria.com/biznis/kompanije/101565/pocetak-nove-ere-za-kripto-u-hrvatskoj-electrocoin-dobio-prvu-hanfinu-mica-licencu/news" target="_blank" rel="noopener">Bloomberg Adria: Početak nove ere za kripto u Hrvatskoj</a></li>
+        <li id="s4"><a href="https://www.croatiaweek.com/croatia-first-mica-crypto-licence-electrocoin/" target="_blank" rel="noopener">Croatia Week: Croatia issues first crypto licence under MiCA</a></li>
+        <li id="s5"><a href="https://www.amf-france.org/en/warnings/white-lists/casp/electrocoin-ltd-services" target="_blank" rel="noopener">AMF (Francuska): bijela lista CASP-ova</a></li>
+        <li id="s6"><a href="https://thebanks.eu/vasps/electrocoin-466514" target="_blank" rel="noopener">TheBanks.eu: profil Electrocoina i popis država putovnice</a></li>
+        <li id="s7"><a href="https://www.companywall.hr/tvrtka/electrocoin-doo/MM14Q7pR" target="_blank" rel="noopener">CompanyWall: osnovni i financijski podaci</a></li>
+        <li id="s8"><a href="https://www.fininfo.hr/Poduzece/Pregled/electrocoin/Detaljno/546504" target="_blank" rel="noopener">Fininfo: vlasnici i zastupnici</a></li>
+        <li id="s9"><a href="https://www.nacional.hr/peraci-novca-ne-bi-se-slozili-s-tezom-da-je-trgovanje-kriptovalutama-idealno-za-tu-rabotu/" target="_blank" rel="noopener">Nacional: intervju s Nikolom Škorićem (2021.)</a></li>
+        <li id="s10"><a href="https://ergomania.eu/croatian-fintech-scene-cutting-edge-fintech-solutions/" target="_blank" rel="noopener">Ergomania: Croatian Fintech, Electrocoin</a></li>
+        <li id="s11"><a href="https://fintech.hu/from-nuclear-engineer-to-crypto-pioneer-how-nikola-skoric-is-revolutionizing-european-finance/" target="_blank" rel="noopener">Fintech.hu: From Nuclear Engineer to Crypto Pioneer (2025.)</a></li>
+        <li id="s12"><a href="https://en.lider.media/2026/05/20/nikola-skoric-what-is-the-future-of-cryptocurrencies-in-croatia/" target="_blank" rel="noopener">Lider: What is the Future of Cryptocurrencies in Croatia? (20. 5. 2026.)</a></li>
+        <li id="s13"><a href="https://hr.bloombergadria.com/t/15808/electrocoin" target="_blank" rel="noopener">Bloomberg Adria: članci o Electrocoinu (2022.–2026.)</a></li>
+        <li id="s14"><a href="https://paycek.io/" target="_blank" rel="noopener">PayCek.io: službena stranica usluge</a></li>
+        <li id="s15"><a href="https://lidermedia.hr/poslovna-scena/hrvatska/na-46-benzinskih-postaja-u-hrvatskoj-omoguceno-je-placanje-kriptovalutama-135200/" target="_blank" rel="noopener">Lider: Na 46 benzinskih postaja omogućeno plaćanje kriptovalutama (2. 2. 2021.)</a></li>
+        <li id="s16"><a href="https://www.netokracija.com/konzum-kriptovalute-186452" target="_blank" rel="noopener">Netokracija: Konzum prvi lanac s plaćanjem kriptovalutama (1. 12. 2021.)</a></li>
+        <li id="s17"><a href="https://www.tportal.hr/biznis/clanak/hrvatska-posta-se-odvazila-napraviti-ono-sto-jos-nije-napravila-niti-jedna-banka-primaju-i-kriptovalute-20191211" target="_blank" rel="noopener">tportal: Hrvatska pošta prima kriptovalute (11. 12. 2019.)</a></li>
+        <li id="s18"><a href="https://hrvatska.posta.hr/en/press/news/kriptovalute-od-sada-mozete-i-kupiti-u-postanskim-uredima-9221-9225" target="_blank" rel="noopener">Hrvatska pošta: kriptovalute se mogu i kupiti u uredima (studeni 2021.)</a></li>
+        <li id="s19"><a href="https://www.xprimm.com/Croatian-LAQO-introduces-cryptocurrency-payments-on-its-webshop-articol-16-19419.htm" target="_blank" rel="noopener">XPRIMM: LAQO uvodi plaćanje kriptovalutama (1. 9. 2022.)</a></li>
+        <li id="s20"><a href="https://projekthrvatska.com/electrocoin-iskustvo-hrvatska-kripto-platforma/" target="_blank" rel="noopener">Projekt Hrvatska: Electrocoin iskustvo 2026. (recenzija na poziv tvrtke)</a></li>
+        <li id="s21"><a href="https://tradersunion.com/reviews/electrocoin-hr/" target="_blank" rel="noopener">Traders Union: Electrocoin review</a></li>
+        <li id="s22"><a href="https://icoholder.com/en/companies/electrocoin-d-o-o-3502" target="_blank" rel="noopener">ICOholder: profil tvrtke i tim</a></li>
+        <li id="s23"><a href="https://thepaypers.com/crypto-web3-and-cbdc/interviews/video-interview-defi-summer-2025-nikola-skoric-on-crypto-and-web3-payments" target="_blank" rel="noopener">The Paypers: video intervju s Nikolom Škorićem (14. 2. 2025.)</a></li>
+        <li id="s24"><a href="https://jatrgovac.com/nikola-skoric-electrocoin/" target="_blank" rel="noopener">JaTrgovac: intervju s Nikolom Škorićem (24. 10. 2022.)</a></li>
+      </ol>
+    </section>
+  </main>
+</div>
+
+<script>
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+
+  // Navigacija između dviju stranica
+  const pages = { onama: "O nama", usluge: "Djelatnosti" };
+  function show(id, jump) {
+    if (!pages[id]) id = "onama";
+    for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
+    document.querySelectorAll("[data-page]").forEach(a => a.classList.toggle("on", a.dataset.page === id));
+    document.getElementById("crumb").textContent = pages[id];
+    if (jump) document.getElementById(jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    else scrollTo({ top: 0 });
+  }
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[href^='#']");
+    if (!a) return;
+    const h = a.getAttribute("href").slice(1);
+    if (/^s\d+$/.test(h) || h === "izvori") {
+      e.preventDefault();
+      const t = document.getElementById(h);
+      t.scrollIntoView({ behavior: "smooth", block: "center" });
+      document.querySelectorAll(".src li.hl").forEach(x => x.classList.remove("hl"));
+      if (t.tagName === "LI") t.classList.add("hl");
+      return;
+    }
+    if (pages[h]) { e.preventDefault(); history.replaceState(null, "", "#" + h); show(h, a.dataset.jump); }
+  });
+  show(location.hash.slice(1));
+
+  // Dekorativni blokovi kao u dizajnu
+  const B = "e e e e y e e e e l y y e e l g g l e l g g g o l g g g g g".split(" ");
+  ["art", "art2"].forEach(id => document.getElementById(id).innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
+
+  // Jednostavan stupčasti graf; zadnji stupac je istaknut
+  function bars(id, data, { max, ticks, fmt = v => v, hi = "var(--green)", W = 400, H, bw }) {
+    const svg = document.getElementById(id);
+    const X0 = 30, X1 = W - 4, Y0 = 22, Y1 = H - 30;
+    const y = v => Y1 - v / max * (Y1 - Y0);
+    ticks.forEach(v => { el("line", { x1: X0, x2: X1, y1: y(v), y2: y(v), class: "gl" }, svg); el("text", { x: 0, y: y(v) + 4 }, svg).textContent = v; });
+    const slot = (X1 - X0) / data.length;
+    data.forEach(([lab, v, txt], i) => {
+      const cx = X0 + slot * i + slot / 2, last = i === data.length - 1;
+      el("rect", { x: cx - bw / 2, y: y(v), width: bw, height: Y1 - y(v), rx: 6, style: "fill:" + (last ? hi : "var(--bar)") }, svg);
+      el("text", { x: cx, y: y(v) - 6, "text-anchor": "middle", class: "v" }, svg).textContent = fmt(txt ?? v);
+      el("text", { x: cx, y: H - 10, "text-anchor": "middle" }, svg).textContent = lab;
+    });
+  }
+  bars("ch-turnover", [["2018.", 30, "~30"], ["2020.", 43.8, "43,8"], ["2021.", 72.3, "72,3"]], { max: 80, ticks: [0, 20, 40, 60, 80], fmt: t => "€" + t + " mil.", H: 220, bw: 64 });
+  bars("ch-staff", [["2017.", 7], ["2021.", 18], ["2022.", 28], ["2023.", 29], ["2024.", 27], ["2025.", 28]], { max: 30, ticks: [0, 10, 20, 30], hi: "var(--yellow)", H: 180, bw: 36 });
+  bars("ch-coins", [["2021.", 30, "~30"], ["2022.", 35], ["2026.", 60, "60+"]], { max: 60, ticks: [0, 20, 40, 60], hi: "var(--orange)", H: 150, bw: 56 });
+
+  // Udio bitcoina
+  {
+    const svg = document.getElementById("ch-btc");
+    el("rect", { x: 0, y: 18, width: 400, height: 34, rx: 8, style: "fill:var(--bar)" }, svg);
+    el("rect", { x: 0, y: 18, width: 320, height: 34, rx: 8, style: "fill:var(--green)" }, svg);
+    el("text", { x: 12, y: 40, class: "v", style: "fill:#16170f" }, svg).textContent = "BTC >80%";
+    el("text", { x: 388, y: 40, "text-anchor": "end" }, svg).textContent = "ostalo";
+  }
+
+  // YouTube intervjui
+  const vids = [
+    ["bJ2pUTIoxBc", "Nikola Škorić osnivanjem tvrtke Electrocoin započeo je revoluciju u plaćanju", "Priča o osnivanju"],
+    ["FzEQmFYFFU8", "Intervju tjedna: Nikola Škorić, CEO Electrocoin", "Intervju"],
+    ["g_IFHqeUVO8", "Kakva je budućnost kriptovaluta u Hrvatskoj?", "Razgovor"],
+    ["Ikvk9mXxQwU", "Relax Room Podcast #3: Nikola Škorić (Electrocoin)", "Podcast"],
+    ["6drcQz30VGQ", "Podcast Inkubator #640: Nikola Škorić o kriptovalutama", "Podcast"],
+    ["TMpym5MjiHY", "DeFi, TradFi i usvajanje kripta: Nikola Škorić o najnovijim kretanjima", "Intervju, engleski"],
+    ["Bt3SV9CTj6k", "Jedina investicija koja ne gubi vrijednost dugoročno", "Razgovor"],
+    ["_zxQh_l3dSw", "Zašto bitcoin može biti tvoja najbolja investicija", "Razgovor"],
+  ];
+  document.getElementById("videos").innerHTML = vids.map(([id, t, k]) =>
+    `<a class="video" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><span class="th"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>${t}</b><span>${k} · YouTube</span></a>`).join("");
+
+  // Države putovnice
+  "AT BE BG CY CZ DE DK EE ES FI FR GR HR HU IE IS IT LI LT LU LV MT NL NO PL PT RO SE SI SK".split(" ")
+    .forEach(c => { const s = document.createElement("span"); s.textContent = c; document.getElementById("eea").appendChild(s); });
+})();
+</script>
+</body>
+</html>
