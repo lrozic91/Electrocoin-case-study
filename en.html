@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Electrocoin</title>
+<title>Electrocoin · Case study</title>
+<meta name="description" content="Electrocoin.eu: history, services and growth opportunities of Croatia's first crypto exchange with a MiCA licence.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#8cc63f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -773,6 +778,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
     document.querySelectorAll("[data-page]").forEach(a => a.classList.toggle("on", a.dataset.page === id));
     document.getElementById("crumb").textContent = pages[id];
+    document.title = pages[id] + " · Electrocoin case study";
     document.getElementById("lang").href = document.getElementById("lang").getAttribute("href").split("#")[0] + "#" + id;
     if (jump) document.getElementById(jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
     else scrollTo({ top: 0 });
