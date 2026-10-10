@@ -115,6 +115,8 @@ table.revt td small.pos{color:var(--green-d)}
 table.revt td{vertical-align:top}
 .chart.lg text{font-size:14px}
 .chart.lg text.v{font-size:17px;font-weight:700}
+.chart.lg.many text{font-size:12.5px}
+.chart.lg.many text.v{font-size:14px;letter-spacing:-.02em}
 
 /* Vremenska crta */
 .tl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:0}
@@ -339,9 +341,10 @@ table.matrix td:nth-child(2){background:var(--soft)}
 
       <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
         <section class="card">
-          <div class="hd"><div><p class="ttl">Turnover over the years</p><div class="cap">€ millions, volume of assets exchanged</div></div></div>
-          <svg class="chart" id="ch-turnover" viewBox="0 0 400 220" role="img" aria-label="Turnover: 2018 around €30 million, 2020 €43.8 million, 2021 €72.3 million"></svg>
-          <p class="note">2020 and 2021 converted from kuna at a rate of 7.5345. Sources: <a href="#s14">14</a>, <a href="#s9">9</a>, <a href="#s13">13</a>.</p>
+          <div class="hd"><div><p class="ttl">Turnover over the years</p><div class="cap">€ millions, value of assets exchanged (gross)</div></div></div>
+          <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Reported (Fina or media)</span><span><i class="sw est"></i>Estimate</span></div>
+          <svg class="chart lg many" id="ch-turnover" viewBox="0 0 520 260" role="img" aria-label="Turnover in € millions: 2014 estimate about 0.03, 2015 0.46, 2016 1.35, 2017 27.5, 2018 27.6, 2019 34.5, 2020 43.8, 2021 79.6, 2022 76, 2023 estimate about 64, 2024 estimate about 67, 2025 estimate about 59"></svg>
+          <p class="note"><b>Estimates:</b> 2014 is derived from Bloomberg's report that revenue grew 932-fold up to 2017<sup><a href="#s69">69</a></sup>. For 2023–2025 the company only reports its earnings, so I estimate turnover assuming it keeps about 2% of turnover (margin of 1–2%, PayCek fee of 2–2.5%)<sup><a href="#s56">56</a></sup><sup><a href="#s70">70</a></sup>. Up to 2022, turnover equals gross revenue because revenue included the value of crypto sold. Kuna converted at 7.5345. Sources: <a href="#s68">68</a>, <a href="#s69">69</a>, <a href="#s52">52</a>, <a href="#s51">51</a>, <a href="#s54">54</a>, <a href="#s7">7</a>.</p>
         </section>
         <section class="card">
           <div class="hd"><div><p class="ttl">Headcount</p><div class="cap">From seven people to a team of 28</div></div></div>
@@ -351,16 +354,17 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <section class="card">
           <div class="hd"><div><p class="ttl">Revenue over the years</p><div class="cap">Company earnings (net), € millions</div></div></div>
           <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Official (FINA)</span><span><i class="sw est"></i>Estimate from turnover</span></div>
-          <svg class="chart lg" id="ch-rev" viewBox="0 0 480 250" role="img" aria-label="Net revenue: estimates 2016 around 0.03, 2018 around 0.53, 2019 around 0.69, 2020 around 0.88, 2021 around 1.59, 2022 around 1.52 million euros; official 2023 1.28, 2024 1.34, 2025 1.18 million euros"></svg>
+          <svg class="chart lg many" id="ch-rev" viewBox="0 0 480 250" role="img" aria-label="Net revenue: estimates 2015 around 0.01, 2016 around 0.03, 2017 around 0.55, 2018 around 0.55, 2019 around 0.69, 2020 around 0.88, 2021 around 1.59, 2022 around 1.52 million euros; official 2023 1.28, 2024 1.34, 2025 1.18 million euros"></svg>
           <p class="note">Until 2022, only gross revenue was published, which includes the value of cryptocurrency sold. To make those years comparable with the official figures from 2023 onwards, I show them as an estimate: 2% of gross revenue, in line with PayCek's fee of 2–2.5%. This is my assumption, not company data.</p>
           <div class="tw" style="margin-top:12px">
             <table class="revt">
               <thead><tr><th>Year and source</th><th>Gross</th><th>Net</th></tr></thead>
               <tbody>
-                <tr><td>2014–2015<small>Not found</small></td><td>–</td><td>–</td></tr>
-                <tr><td>2016<small>Unofficial: derived from Deloitte's growth figure of 2,617% (2016–2019)<sup><a href="#s55">55</a></sup></small></td><td>~€1.3m</td><td>~€0.03m</td></tr>
-                <tr><td>2017<small>Not found</small></td><td>–</td><td>–</td></tr>
-                <tr><td>2018<small>Unofficial: “up to HRK 200m” according to Lider<sup><a href="#s56">56</a></sup><sup><a href="#s57">57</a></sup></small></td><td>~€26.5m</td><td>~€0.53m</td></tr>
+                <tr><td>2014<small>Estimate: derived from 932-fold growth up to 2017<sup><a href="#s69">69</a></sup></small></td><td>~€0.03m</td><td>–</td></tr>
+                <tr><td>2015<small>Per Fina, HRK 3.5m<sup><a href="#s68">68</a></sup></small></td><td>€0.46m</td><td>~€0.01m</td></tr>
+                <tr><td>2016<small>Per Fina, HRK 10.2m<sup><a href="#s68">68</a></sup>; consistent with Deloitte's 2,617% growth<sup><a href="#s55">55</a></sup></small></td><td>€1.35m</td><td>~€0.03m</td></tr>
+                <tr><td>2017<small>Per Fina, HRK 206.9m<sup><a href="#s69">69</a></sup></small></td><td>€27.5m</td><td>~€0.55m</td></tr>
+                <tr><td>2018<small>Per Fina, HRK 207.7m<sup><a href="#s69">69</a></sup></small></td><td>€27.6m</td><td>~€0.55m</td></tr>
                 <tr><td>2019<small>Media, ~HRK 260m<sup><a href="#s52">52</a></sup></small></td><td>~€34.5m</td><td>~€0.69m</td></tr>
                 <tr><td>2020<small>Media, HRK 330m<sup><a href="#s52">52</a></sup></small></td><td>€43.8m</td><td>~€0.88m</td></tr>
                 <tr><td>2021<small>Media, HRK 600m<sup><a href="#s51">51</a></sup></small></td><td>€79.6m</td><td>~€1.59m</td></tr>
@@ -898,6 +902,9 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <li id="s65"><a href="https://narodne-novine.nn.hr/clanci/sluzbeni/2025_06_95_1300.html" target="_blank" rel="noopener">HANFA: Ordinance on authorisation of crypto-asset service providers (OG 95/2025)</a></li>
         <li id="s66"><a href="https://www.hanfa.hr/licenciranje/odobrenja-za-drustva-iz-nadleznosti-hanfe/" target="_blank" rel="noopener">HANFA: licensing and application form</a></li>
         <li id="s67"><a href="https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_157_2374.html" target="_blank" rel="noopener">HANFA: Ordinance on types and amounts of fees (OG 157/2025)</a></li>
+        <li id="s68"><a href="https://www.monitor.hr/start-up-zvijezde-haker-metalac-i-nuklearni-inzenjer-trguju-bitcoinom/" target="_blank" rel="noopener">Monitor.hr / Poslovni dnevnik: revenue in 2015 and 2016 (2 November 2017)</a></li>
+        <li id="s69"><a href="https://n1info.hr/magazin/tehnologija/a440449-Hrvatski-startup-Electrocoin-Raiffeisen-banci-ponudio-da-lansiraju-kripto-kunuandquot/" target="_blank" rel="noopener">N1 / Bloomberg Adria: revenue in 2017 and 2018 per Fina (2 September 2019)</a></li>
+        <li id="s70"><a href="https://www.nacional.hr/peraci-novca-ne-bi-se-slozili-s-tezom-da-je-trgovanje-kriptovalutama-idealno-za-tu-rabotu/" target="_blank" rel="noopener">Nacional: HRK 330m turnover and PayCek fee (29 May 2021)</a></li>
       </ol>
     </section>
   </main>
@@ -954,21 +961,22 @@ table.matrix td:nth-child(2){background:var(--soft)}
       el("text", { x: cx, y: H - 10, "text-anchor": "middle" }, svg).textContent = lab;
     });
   }
-  bars("ch-turnover", [["2018", 30, "~30"], ["2020", 43.8, "43.8"], ["2021", 72.3, "72.3"]], { max: 80, ticks: [0, 20, 40, 60, 80], fmt: t => "€" + t + "m", H: 220, bw: 64 });
   bars("ch-staff", [["2017", 7], ["2021", 18], ["2022", 28], ["2023", 29], ["2024", 27], ["2025", 28]], { max: 30, ticks: [0, 10, 20, 30], hi: "var(--yellow)", H: 180, bw: 36 });
-  (function () {
-    const svg = document.getElementById("ch-rev"), W = 480, H = 250, X0 = 34, X1 = W - 4, Y0 = 28, Y1 = H - 32, max = 1.8;
+  // Stupčasti graf s razlikom između podatka (zeleno) i procjene (isprekidano)
+  function ybars(id, d, { max, ticks, W, H, bw }) {
+    const svg = document.getElementById(id), X0 = 34, X1 = W - 4, Y0 = 28, Y1 = H - 32;
     const y = v => Y1 - v / max * (Y1 - Y0);
-    [0, 0.6, 1.2, 1.8].forEach(v => { el("line", { x1: X0, x2: X1, y1: y(v), y2: y(v), class: "gl" }, svg); el("text", { x: 0, y: y(v) + 5 }, svg).textContent = String(v); });
-    const d = [["2016", .025, "~0.03"], ["2018", .53, "~0.53"], ["2019", .69, "~0.69"], ["2020", .88, "~0.88"], ["2021", 1.59, "~1.59"], ["2022", 1.52, "~1.52"], ["2023", 1.28, "1.28", 1], ["2024", 1.34, "1.34", 1], ["2025", 1.18, "1.18", 1]];
-    const slot = (X1 - X0) / d.length, bw = 36;
+    ticks.forEach(v => { el("line", { x1: X0, x2: X1, y1: y(v), y2: y(v), class: "gl" }, svg); el("text", { x: 0, y: y(v) + 5 }, svg).textContent = (v => String(v))(v); });
+    const slot = (X1 - X0) / d.length;
     d.forEach(([lab, v, txt, off], i) => {
       const cx = X0 + slot * i + slot / 2, h = Math.max(Y1 - y(v), 2);
-      el("rect", off ? { x: cx - bw / 2, y: Y1 - h, width: bw, height: h, rx: 6, style: "fill:var(--green)" } : { x: cx - bw / 2, y: Y1 - h, width: bw, height: h, rx: 6, class: "est", style: "fill:var(--bar)" }, svg);
+      el("rect", off ? { x: cx - bw / 2, y: Y1 - h, width: bw, height: h, rx: 5, style: "fill:var(--green)" } : { x: cx - bw / 2, y: Y1 - h, width: bw, height: h, rx: 5, class: "est", style: "fill:var(--bar)" }, svg);
       el("text", { x: cx, y: Y1 - h - 7, "text-anchor": "middle", class: "v" }, svg).textContent = txt;
       el("text", { x: cx, y: H - 10, "text-anchor": "middle" }, svg).textContent = lab;
     });
-  })();
+  }
+  ybars("ch-turnover", [["2014", 0.03, "~0.03"], ["2015", 0.46, "0.46", 1], ["2016", 1.35, "1.35", 1], ["2017", 27.5, "27.5", 1], ["2018", 27.6, "27.6", 1], ["2019", 34.5, "34.5", 1], ["2020", 43.8, "43.8", 1], ["2021", 79.6, "79.6", 1], ["2022", 76, "76", 1], ["2023", 64, "~64"], ["2024", 67, "~67"], ["2025", 59, "~59"]], { max: 80, ticks: [0, 20, 40, 60, 80], W: 520, H: 260, bw: 30 });
+  ybars("ch-rev", [["2015", 0.009, "0.01"], ["2016", 0.027, "0.03"], ["2017", 0.55, "0.55"], ["2018", 0.55, "0.55"], ["2019", 0.69, "0.69"], ["2020", 0.88, "0.88"], ["2021", 1.59, "1.59"], ["2022", 1.52, "1.52"], ["2023", 1.28, "1.28", 1], ["2024", 1.34, "1.34", 1], ["2025", 1.18, "1.18", 1]], { max: 1.8, ticks: [0, 0.6, 1.2, 1.8], W: 480, H: 250, bw: 32 });
   bars("ch-coins", [["2021", 30, "~30"], ["2022", 35], ["2026", 60, "60+"]], { max: 60, ticks: [0, 20, 40, 60], hi: "var(--orange)", H: 150, bw: 56 });
 
   // Bitcoin share
