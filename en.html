@@ -107,6 +107,7 @@ sup+sup::before{content:",";font-size:10px;color:var(--muted)}
 .mix .row b{display:block;font-size:12.5px;margin-bottom:5px}
 .mix .row b small{font-weight:500;color:var(--muted)}
 .stack{display:flex;height:30px;border-radius:8px;overflow:hidden;gap:2px}
+.mix .est .stack{outline:1.5px dashed var(--muted);outline-offset:2px}
 .stack i{display:flex;min-width:0;align-items:center;justify-content:center;font-style:normal;font-size:11.5px;font-weight:700;color:#16170f;white-space:nowrap;overflow:hidden}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--muted);flex-wrap:wrap}
 .legend span{display:inline-flex;align-items:center;gap:6px}
@@ -476,18 +477,20 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <p class="ttl">Trading mix</p>
           <div class="cap">Share of cryptocurrencies in exchange turnover and PayCek payments</div>
           <div class="mix">
+            <div class="row"><b>Exchange, 2014–2017 <small>· bitcoin is the only cryptocurrency offered</small></b><div class="stack"><i style="width:100%;background:var(--green)">BTC 100%</i></div></div>
+            <div class="row est"><b>Exchange, 2018 <small>· BTC and ETH, with ETH buy-only; estimate</small></b><div class="stack"><i style="width:95%;background:var(--green)">BTC almost all</i><i style="width:5%;background:var(--orange)"></i></div></div>
             <div class="row"><b>Exchange, around 2020 <small>· share of turnover; ETH, USDT and USDC together ~18%</small></b><div class="stack"><i style="width:80%;background:var(--green)" title="BTC >80%">BTC >80%</i><i style="width:18%;background:var(--orange)" title="ETH, USDT, USDC ~18%">~18%</i><i style="width:2%;background:var(--bar)" title=""></i></div></div>
             <div class="row"><b>Exchange, late 2023 <small>· share of turnover</small></b><div class="stack"><i style="width:55%;background:var(--green)" title="BTC 55%">BTC 55%</i><i style="width:27%;background:var(--yellow)" title="USDT 27%">USDT 27%</i><i style="width:10%;background:var(--orange)" title="ETH 10%">10%</i><i style="width:8%;background:var(--bar)" title="8%">8%</i></div></div>
             <div class="row"><b>PayCek, late 2023 <small>· share of payments by count</small></b><div class="stack"><i style="width:24%;background:var(--yellow)" title="USDT 24%">USDT 24%</i><i style="width:17%;background:var(--green)" title="BTC 17%">BTC 17%</i><i style="width:17%;background:var(--orange)" title="ETH 17%">ETH 17%</i><i style="width:13%;background:#c9e59f" title="XRP 13%">XRP 13%</i><i style="width:29%;background:var(--bar)" title="other 29%">other 29%</i></div></div>
           </div>
           <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Bitcoin</span><span><i class="sw" style="background:var(--yellow)"></i>USDT</span><span><i class="sw" style="background:var(--orange)"></i>Ether</span><span><i class="sw" style="background:#c9e59f"></i>XRP</span><span><i class="sw" style="background:var(--bar)"></i>Other</span></div>
-          <p class="note">Bitcoin fell from more than 80% to about 55% of turnover, while the USDT stablecoin grew to 27%. The 2023 figures are Škorić's numbers in Forbes from January 2024, with no exact period. I found no figures for other years. Sources: <a href="#s52">52</a>, <a href="#s9">9</a>, <a href="#s72">72</a>.</p>
+          <p class="note">A dashed outline marks an estimate. Until September 2017 the exchange offered only bitcoin<sup><a href="#s74">74</a></sup><sup><a href="#s73">73</a></sup>, and in 2018 it added ether for buying only<sup><a href="#s75">75</a></sup>, so bitcoin's share was almost total. Around 2020 bitcoin was more than 80% of turnover<sup><a href="#s52">52</a></sup><sup><a href="#s9">9</a></sup>, and by late 2023 about 55%, while USDT grew to 27%<sup><a href="#s72">72</a></sup>. The 2023 figures are Škorić's numbers in Forbes from January 2024, with no exact period. I found no breakdown for 2019, 2021, 2022 or 2024–2026; in 2025 Electrocoin still offers USDT and USDC<sup><a href="#s76">76</a></sup>.</p>
         </section>
         <section class="card">
           <p class="ttl">Growing crypto offering</p>
           <div class="cap">Number of cryptocurrencies on the exchange</div>
-          <svg class="chart" id="ch-coins" viewBox="0 0 400 150" role="img" aria-label="Cryptocurrencies on the exchange: about 30 in 2021, 35 in 2022, more than 60 in 2026"></svg>
-          <p class="note">Sources: <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s20">20</a>.</p>
+          <svg class="chart" id="ch-coins" viewBox="0 0 400 150" role="img" aria-label="Cryptocurrencies on the exchange: one in 2014, two in 2017, more than 25 in 2019, 27 in 2021, 35 in 2022, more than 60 in 2026"></svg>
+          <p class="note">Sources: <a href="#s74">74</a>, <a href="#s73">73</a>, <a href="#s52">52</a>, <a href="#s24">24</a>, <a href="#s20">20</a>.</p>
         </section>
         <section class="card">
           <p class="ttl">Where clients come from</p>
@@ -917,6 +920,10 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <li id="s70"><a href="https://www.nacional.hr/peraci-novca-ne-bi-se-slozili-s-tezom-da-je-trgovanje-kriptovalutama-idealno-za-tu-rabotu/" target="_blank" rel="noopener">Nacional: HRK 330m turnover and PayCek fee (29 May 2021)</a></li>
         <li id="s71"><a href="https://lidermedia.hr/kripto/rast-ulaganja-u-kripto-u-veljaci-vrijednost-trgovanja-u-domacim-mjenjacnicama-iznosila-12-4-milijuna-eura-156065/" target="_blank" rel="noopener">Lider: turnover of Croatian crypto exchanges per HANFA, January and February 2024 (12 March 2024)</a></li>
         <li id="s72"><a href="https://forbes.dnevnik.hr/financije/hrvatski-strucnjaci-za-kripto-brane-tether-ali-priznaju-da-ga-koriste-i-kriminalci/" target="_blank" rel="noopener">Forbes Croatia: share of bitcoin, USDT and ether at Electrocoin and PayCek (24 January 2024)</a></li>
+        <li id="s73"><a href="https://bitcoin-radionica.com/bitcoin-mjenjacnica-hr-sada-mozete-kupiti-ethereum/" target="_blank" rel="noopener">Bitcoin radionica: Bitcoin mjenjačnica adds Ethereum as its first altcoin (19 September 2017)</a></li>
+        <li id="s74"><a href="https://medium.com/@DaPowerPlay/dpp-partners-with-croatias-first-crypto-brokerage-f45bbdfcc033" target="_blank" rel="noopener">DPP / Medium: Electrocoin offered bitcoin from 2014, more than 25 cryptocurrencies in 2019 (29 January 2019)</a></li>
+        <li id="s75"><a href="https://bitcointalk.org/index.php?topic=2978947.0" target="_blank" rel="noopener">Bitcointalk (forum, unofficial): only BTC and ETH on the exchange (19 February 2018)</a></li>
+        <li id="s76"><a href="https://x.com/ElectrocoinEU/status/1884602906181079055" target="_blank" rel="noopener">Electrocoin on X: USDT and USDC via Polkadot on Electrocoin Trade (January 2025)</a></li>
       </ol>
     </section>
   </main>
@@ -989,7 +996,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
   }
   ybars("ch-turnover", [["2014", 0.03, "~0.03"], ["2015", 0.46, "0.46", 1], ["2016", 1.35, "1.35", 1], ["2017", 27.5, "27.5", 1], ["2018", 27.6, "27.6", 1], ["2019", 34.5, "34.5", 1], ["2020", 43.8, "43.8", 1], ["2021", 79.6, "79.6", 1], ["2022", 76, "76", 1], ["2023", 64, "~64"], ["2024", 67, "~67"], ["2025", 59, "~59"]], { max: 80, ticks: [0, 20, 40, 60, 80], W: 520, H: 260, bw: 30 });
   ybars("ch-rev", [["2015", 0.009, "0.01"], ["2016", 0.027, "0.03"], ["2017", 0.55, "0.55"], ["2018", 0.55, "0.55"], ["2019", 0.69, "0.69"], ["2020", 0.88, "0.88"], ["2021", 1.59, "1.59"], ["2022", 1.52, "1.52"], ["2023", 1.28, "1.28", 1], ["2024", 1.34, "1.34", 1], ["2025", 1.18, "1.18", 1]], { max: 1.8, ticks: [0, 0.6, 1.2, 1.8], W: 480, H: 250, bw: 32 });
-  bars("ch-coins", [["2021", 30, "~30"], ["2022", 35], ["2026", 60, "60+"]], { max: 60, ticks: [0, 20, 40, 60], hi: "var(--orange)", H: 150, bw: 56 });
+  bars("ch-coins", [["2014", 1, "1"], ["2017", 2, "2"], ["2019", 25, "25+"], ["2021", 27, "27"], ["2022", 35, "35"], ["2026", 60, "60+"]], { max: 60, ticks: [0, 20, 40, 60], hi: "var(--orange)", H: 150, bw: 40 });
 
 
   // YouTube interviews
