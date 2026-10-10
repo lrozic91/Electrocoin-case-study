@@ -158,6 +158,14 @@ dl.facts dd{margin:0;font-weight:500;overflow-wrap:anywhere}
 .svc-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
 .svc-ico svg{width:20px;height:20px;stroke:#16170f;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .svc-h{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+ol.mica{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+ol.mica li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:10px;font-size:13px}
+ol.mica .k{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+ol.mica b{font-size:12px;font-weight:700}
+ol.mica li.y{background:color-mix(in srgb,var(--green) 16%,transparent);border-color:color-mix(in srgb,var(--green) 45%,transparent)}
+ol.mica li.y b{color:var(--green-d)}
+ol.mica li.n{color:var(--muted)}
+ol.mica li.n b{color:var(--faint);font-weight:600}
 .ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:13.5px}
 .ul li{display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px}
 .ul li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--green);margin-top:6px}
@@ -528,12 +536,20 @@ table.matrix td:nth-child(2){background:var(--soft)}
       <section class="card s7" id="licenca">
         <div class="svc-h"><span class="svc-ico" style="background:var(--yellow)"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><p class="ttl">5. Regulacija: MiCA licenca HANFA-e</p><div class="cap">Prvi upis u registar pružatelja usluga kriptoimovine</div></div></div>
         <p>Do 2026. Electrocoin je poslovao kao registrirani pružatelj usluga virtualne imovine (VASP) prema zakonu o sprječavanju pranja novca. Uprava HANFA-e 9. travnja 2026. odobrila mu je rad prema uredbi (EU) 2023/1114, kao prvoj tvrtki u Hrvatskoj<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup>. Ostali VASP-ovi moraju licencu ishoditi do 1. srpnja 2026.<sup><a href="#s1">1</a></sup>; od 16 registriranih tvrtki na tržištu ih je ostalo sedam<sup><a href="#s12">12</a></sup>.</p>
-        <p class="eyebrow" style="margin:14px 0 0">Odobrene usluge</p>
-        <ul class="ul">
-          <li><span>Zamjena kriptoimovine za novčana sredstva</span></li>
-          <li><span>Zamjena kriptoimovine za drugu kriptoimovinu</span></li>
-          <li><span>Pohrana i administriranje kriptoimovine u ime klijenata</span></li>
-        </ul>
+        <p class="eyebrow" style="margin:14px 0 0">Usluge iz MiCA licence: Electrocoin ima 3 od 10</p>
+        <ol class="mica">
+          <li class="y"><span class="k">KI1</span><span>Pohrana i administriranje kriptoimovine u ime klijenata</span><b>ima</b></li>
+          <li class="n"><span class="k">KI2</span><span>Upravljanje platformom za trgovanje kriptoimovinom</span><b>nema</b></li>
+          <li class="y"><span class="k">KI3</span><span>Zamjena kriptoimovine za novčana sredstva</span><b>ima</b></li>
+          <li class="y"><span class="k">KI4</span><span>Zamjena kriptoimovine za drugu kriptoimovinu</span><b>ima</b></li>
+          <li class="n"><span class="k">KI5</span><span>Izvršavanje naloga za kriptoimovinu u ime klijenata</span><b>nema</b></li>
+          <li class="n"><span class="k">KI6</span><span>Plasiranje kriptoimovine</span><b>nema</b></li>
+          <li class="n"><span class="k">KI7</span><span>Zaprimanje i prijenos naloga za kriptoimovinu</span><b>nema</b></li>
+          <li class="n"><span class="k">KI8</span><span>Savjetovanje o kriptoimovini</span><b>nema</b></li>
+          <li class="n"><span class="k">KI9</span><span>Upravljanje portfeljem kriptoimovine</span><b>nema</b></li>
+          <li class="n"><span class="k">KI10</span><span>Usluge prijenosa kriptoimovine u ime klijenata</span><b>nema</b></li>
+        </ol>
+        <p class="note">MiCA (čl. 3. st. 1. t. 16. Uredbe 2023/1114) propisuje deset usluga kriptoimovine, a HANFA ih u registru označava od KI1 do KI10. Electrocoin je odobren za KI1, KI3 i KI4<sup><a href="#s28">28</a></sup><sup><a href="#s5">5</a></sup>. Za usporedbu, Digital Assets (Bitcoin Store) ima pet usluga (KI1, KI3, KI4, KI6, KI10), a White Tech četiri (KI1, KI3, KI4, KI10)<sup><a href="#s28">28</a></sup>.</p>
         <p class="eyebrow" style="margin:14px 0 0">Putovnica u 30 država EGP-a<sup><a href="#s6">6</a></sup></p>
         <div class="eea" id="eea"></div>
       </section>
