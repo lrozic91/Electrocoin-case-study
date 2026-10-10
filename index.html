@@ -284,6 +284,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
       <div class="crumb">Electrocoin.eu <span>/</span> <b id="crumb">O nama</b></div>
       <nav class="tabs" aria-label="Stranice"><a href="#onama" data-page="onama">O nama</a><a href="#usluge" data-page="usluge">Djelatnosti</a><a href="#rast" data-page="rast">Rast</a></nav>
       <span class="sp"></span>
+      <a class="pill" id="lang" href="en.html" hreflang="en" lang="en" title="English version">EN</a>
       <a class="pill" href="https://paycek.io/" target="_blank" rel="noopener">PayCek ↗</a>
       <a class="btn-ink" href="https://electrocoin.eu/hr" target="_blank" rel="noopener">Kupi kripto</a>
     </header>
@@ -772,6 +773,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
     document.querySelectorAll("[data-page]").forEach(a => a.classList.toggle("on", a.dataset.page === id));
     document.getElementById("crumb").textContent = pages[id];
+    document.getElementById("lang").href = document.getElementById("lang").getAttribute("href").split("#")[0] + "#" + id;
     if (jump) document.getElementById(jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
     else scrollTo({ top: 0 });
   }
@@ -871,7 +873,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
     ["M obrada d.o.o.", "19. 12. 2024.", "E F", 0, ""],
   ];
   document.querySelector("#vasp tbody").innerHTML = vasp.map(([n, d, sv, ok, note]) =>
-    `<tr><td>${n}<small><span class="st ${ok ? "ok" : "no"}">${ok ? "Licenca" : "Bez licence"}</span></td><td>${note || "—"}</small></td><td>${d}</td><td>${sv}</td></tr>`).join("");
+    `<tr><td>${n}</td><td>${d}</td><td>${sv}</td><td><span class="st ${ok ? "ok" : "no"}">${ok ? "Licenca" : "Bez licence"}</span></td><td>${note || "—"}</td></tr>`).join("");
 
   // Države putovnice
   "AT BE BG CY CZ DE DK EE ES FI FR GR HR HU IE IS IT LI LT LU LV MT NL NO PL PT RO SE SI SK".split(" ")
