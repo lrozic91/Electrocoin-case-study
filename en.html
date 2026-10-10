@@ -207,7 +207,7 @@ table.vasp td:last-child{white-space:normal;min-width:220px;color:var(--muted)}
 .deal p{margin:0;font-size:13px}
 .deal .why{background:var(--soft);border-radius:10px;padding:8px 10px}
 .deal-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.fit{font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px}
+.fit{font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;white-space:nowrap;flex:none}
 .deal.hi .fit{background:var(--green);color:#16170f}.deal.mid .fit{background:var(--yellow);color:#16170f}.deal.lo .fit{background:var(--orange);color:#16170f}
 table.matrix td,table.matrix th{text-align:left;white-space:normal;min-width:96px}
 table.matrix th small{color:var(--faint);font-weight:500}
@@ -271,6 +271,12 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <a href="#rast" data-jump="konkurencija">Competition</a>
         <a href="#rast" data-jump="prijedlozi">Recommendations</a>
       </div>
+      <a href="#mica" data-page="mica"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>MiCA licence</a>
+      <div class="sub">
+        <a href="#mica" data-jump="mica-ima">Services held</a>
+        <a href="#mica" data-jump="mica-nema">Services not held</a>
+        <a href="#mica" data-jump="mica-kako">How to extend the licence</a>
+      </div>
     </nav>
     <div class="hr"></div>
     <nav class="nav" aria-label="Other">
@@ -287,7 +293,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
   <main class="main">
     <header class="top">
       <div class="crumb">Electrocoin.eu <span>/</span> <b id="crumb">About</b></div>
-      <nav class="tabs" aria-label="Pages"><a href="#onama" data-page="onama">About</a><a href="#usluge" data-page="usluge">Services</a><a href="#rast" data-page="rast">Growth</a></nav>
+      <nav class="tabs" aria-label="Pages"><a href="#onama" data-page="onama">About</a><a href="#usluge" data-page="usluge">Services</a><a href="#rast" data-page="rast">Growth</a><a href="#mica" data-page="mica">MiCA licence</a></nav>
       <span class="sp"></span>
       <a class="pill" id="lang" href="index.html" hreflang="hr" lang="hr" title="Hrvatska verzija">HR</a>
       <a class="pill" href="https://paycek.io/" target="_blank" rel="noopener">PayCek ↗</a>
@@ -698,6 +704,129 @@ table.matrix td:nth-child(2){background:var(--soft)}
       </section>
     </div>
 
+    <!-- ============ PAGE 4: MICA LICENCE ============ -->
+    <div class="grid" id="p-mica" hidden>
+      <section class="card s12">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">MiCA licence · services and extension</div>
+            <h1>Three of ten services. The other seven require an extension of the licence.</h1>
+            <p class="lead">The MiCA Regulation sets out ten crypto-asset services, and each company's licence lists exactly which ones it may provide<sup><a href="#s60">60</a></sup>. Electrocoin holds three: custody, exchange of crypto for money and exchange of crypto for crypto<sup><a href="#s28">28</a></sup><sup><a href="#s58">58</a></sup>. For every new service it must apply to HANFA for an extension of its licence.</p>
+          </div>
+          <div class="art" aria-hidden="true" id="art4"></div>
+        </div>
+      </section>
+
+      <section class="card s3 kpi"><div class="cap">Authorised services</div><div class="big num">3 of 10</div><div class="up">KI1, KI3 and KI4<sup><a href="#s28">28</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Capital class</div><div class="big num">Class 2</div><div class="up">at least €125,000<sup><a href="#s63">63</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">HANFA decision</div><div class="big num">40 days</div><div class="up">working days, from a complete application<sup><a href="#s62">62</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Company capital (2025)</div><div class="big num">€836,766</div><div class="up">enough even for Class 3<sup><a href="#s7">7</a></sup></div></section>
+
+      <section class="card s12" id="mica-ima">
+        <div class="hd"><div><p class="ttl">1. Services Electrocoin may provide</p><div class="cap">Authorised by HANFA decision of 9 April 2026</div></div></div>
+        <div class="deals">
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI1 · Custody and administration of crypto-assets on behalf of clients</h3><span class="fit">held</span></div>
+            <p>The company holds clients' crypto-assets and controls access to them, instead of clients keeping their own private keys. It must have a custody agreement, a custody policy and segregated client assets, and it is liable for losses (Art. 75)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example at Electrocoin:</b> purchased bitcoin stays in the user's account on electrocoin.eu, with no wallet or keys of their own needed<sup><a href="#s20">20</a></sup>.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI3 · Exchange of crypto-assets for funds</h3><span class="fit">held</span></div>
+            <p>Buying and selling crypto for euros. The company must have a non-discriminatory commercial policy and publish its price or the method for calculating it (Art. 77)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example at Electrocoin:</b> buying crypto by card or bank transfer, with cash at 55 Croatian Post offices, and euro payouts to an IBAN within 15–60 minutes<sup><a href="#s20">20</a></sup><sup><a href="#s17">17</a></sup>. PayCek also runs on this service: the customer pays in crypto and the merchant receives euros<sup><a href="#s14">14</a></sup>.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI4 · Exchange of crypto-assets for other crypto-assets</h3><span class="fit">held</span></div>
+            <p>Direct exchange of one cryptocurrency for another, without going through euros. The same rules on pricing and transaction disclosure apply as for KI3 (Art. 77)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example at Electrocoin:</b> swapping bitcoin for ether or USDC within a range of 60+ cryptocurrencies<sup><a href="#s20">20</a></sup>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card s12" id="mica-nema">
+        <div class="hd"><div><p class="ttl">2. Services Electrocoin may not yet provide</p><div class="cap">What each service means and examples of the activities it would enable</div></div></div>
+        <div class="deals">
+          <article class="deal lo">
+            <div class="deal-h"><h3>KI2 · Operation of a trading platform for crypto-assets</h3><span class="fit">not held</span></div>
+            <p>An exchange where buyers and sellers are matched with each other through an order book. It requires operating rules, vetting of crypto-assets before admission to trading, resilient systems and public pre- and post-trade prices; dealing on own account is not allowed (Art. 76)<sup><a href="#s64">64</a></sup>. It moves the company into capital Class 3 (€150,000)<sup><a href="#s63">63</a></sup>.</p>
+            <p class="why"><b>Example activities:</b> an order-book exchange like Kraken or Bitstamp; a regional exchange for tokens of domestic companies, as Adria Digital Exchange attempted<sup><a href="#s35">35</a></sup>.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI5 · Execution of orders for crypto-assets on behalf of clients</h3><span class="fit">not held</span></div>
+            <p>The company executes a client's order on another trading venue, subject to a best execution obligation and an execution policy the client agrees to (Art. 78)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example activities:</b> limit and stop orders executed on external exchanges; brokering large (OTC) purchases across several exchanges to get the best price.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI6 · Placing of crypto-assets</h3><span class="fit">not held</span></div>
+            <p>Selling new tokens to buyers on behalf of the issuer. Before the agreement, the issuer must be informed of the placement method, fees, timing, price and target buyers, and conflicts of interest must be specifically managed (Art. 79)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example activities:</b> distributing a euro stablecoin or a domestic company's token to its own clients; tokenised bonds. In Croatia, Digital Assets (Bitcoin Store) holds it<sup><a href="#s28">28</a></sup>.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI7 · Reception and transmission of orders for crypto-assets</h3><span class="fit">not held</span></div>
+            <p>The company receives an order from a client and passes it on to another party for execution. Orders must be transmitted promptly and accurately, without payments for order routing and without misuse of order information (Art. 80)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example activities:</b> a bank or exchange-office app that sends orders to a partner exchange; a corporate intermediary that collects orders from employees or clients.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI8 · Providing advice on crypto-assets</h3><span class="fit">not held</span></div>
+            <p>Personal recommendations to a client on what to buy or sell. It requires a suitability assessment (knowledge, objectives, financial situation), qualified staff, risk warnings and a suitability report (Art. 81)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example activities:</b> paid consultations for wealthier clients and companies entering crypto. General education, which Electrocoin already provides, is not advice because it is not a personal recommendation.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI9 · Providing portfolio management on crypto-assets</h3><span class="fit">not held</span></div>
+            <p>The company manages a client's crypto at its own discretion under an agreed mandate. The same suitability rules apply as for advice, plus quarterly reports to the client (Art. 81)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Example activities:</b> ready-made portfolios (e.g. 70% BTC, 30% ETH) with automatic rebalancing; a crypto index for clients who do not want to pick for themselves.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI10 · Providing transfer services for crypto-assets on behalf of clients</h3><span class="fit">not held</span></div>
+            <p>Sending crypto from one address or account to another on behalf of a client. It requires a written agreement with the client covering procedures, security, fees and applicable law (Art. 82)<sup><a href="#s64">64</a></sup>, along with the rule on tracing transfers (travel rule).</p>
+            <p class="why"><b>Example activities:</b> sending crypto to an external wallet or to another user; paying merchants and employees in stablecoins through PayCek. Digital Assets and White Tech hold it<sup><a href="#s28">28</a></sup>.</p>
+          </article>
+        </div>
+        <p class="note">The badge colour is my assessment of how well each service would suit Electrocoin: green means a good fit with the existing business, yellow a moderate one, and orange a big step.</p>
+      </section>
+
+      <section class="card s7" id="mica-kako">
+        <p class="ttl">3. How to obtain a licence for the other services</p>
+        <div class="cap">An extension of the existing licence, not a new application from scratch</div>
+        <ol class="tl">
+          <li class="k"><span class="yr">Step 1</span><span class="dot"></span><div><h3>Application for extension</h3><p>A licensed company requests the extension from HANFA, which granted its original licence, by supplementing and updating the information from its Art. 62 application. The request is processed under the same procedure as the first one (Art. 59(8))<sup><a href="#s60">60</a></sup><sup><a href="#s61">61</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Step 2</span><span class="dot"></span><div><h3>Documentation for the new parts only</h3><p>Only what relates to the new service and what has changed is submitted, clearly marked. What HANFA already holds is not resent if the company confirms in writing that it remains accurate (HANFA Ordinance, OG 95/2025, Art. 5)<sup><a href="#s65">65</a></sup>. Each service has its own section: the execution policy for KI5, the platform rules for KI2, staff expertise for KI8 and KI9, and a description of transfers for KI10<sup><a href="#s61">61</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Step 3</span><span class="dot"></span><div><h3>Capital check</h3><p>Capital must exceed the higher of two amounts: the minimum for the class or one quarter of the previous year's fixed overheads (Art. 67)<sup><a href="#s63">63</a></sup>. Electrocoin is already in Class 2, so KI5–KI10 do not change its class. Only KI2 requires Class 3 at €150,000, and the company's capital of €836,766 already covers that<sup><a href="#s7">7</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Step 4</span><span class="dot"></span><div><h3>Submission to HANFA</h3><p>The application, on the prescribed form and with proof of the fee paid, is sent to HANFA<sup><a href="#s66">66</a></sup><sup><a href="#s65">65</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Step 5</span><span class="dot"></span><div><h3>HANFA deadlines</h3><p>Acknowledgement of receipt within 5 working days, completeness check within 25 working days and a decision within 40 working days of a complete application. HANFA may request additional information up to the 20th working day, in which case the clock stops for up to 20 working days (Art. 63)<sup><a href="#s62">62</a></sup>. Realistically, expect 3 to 5 months from submission.</p></div></li>
+          <li class="m"><span class="yr">Step 6</span><span class="dot"></span><div><h3>Registration and start of operations</h3><p>The new service is entered in HANFA's register and ESMA's register, and the existing passport is used to provide it in other EEA countries<sup><a href="#s28">28</a></sup><sup><a href="#s6">6</a></sup>.</p></div></li>
+        </ol>
+        <p class="note">I was unable to confirm the amount of HANFA's application fee; it is set by the Ordinance on the type and amount of fees (OG 157/2025)<sup><a href="#s67">67</a></sup>. The 3 to 5 month estimate is my own.</p>
+      </section>
+
+      <section class="card s5">
+        <p class="ttl">4. What would make sense first</p>
+        <div class="cap">My assessment, not the company's plan</div>
+        <ol class="ideas">
+          <li><b>KI10, crypto transfers.</b> Closest to the existing business and a prerequisite for stablecoin payouts through PayCek. Two domestic competitors already hold it<sup><a href="#s28">28</a></sup>.</li>
+          <li><b>KI7 and KI5, orders.</b> Needed for the banking module: the bank receives the order and Electrocoin executes it. The capital class stays the same.</li>
+          <li><b>KI6, placing.</b> Opens up partnerships with issuers of euro stablecoins and tokens. Digital Assets holds it<sup><a href="#s28">28</a></sup>.</li>
+          <li><b>KI8 and KI9, advice and portfolios.</b> They require qualified staff and suitability assessments, but would turn the education the company already provides into revenue.</li>
+          <li><b>KI2, exchange.</b> The biggest step: new systems, admission rules and capital Class 3. It only makes sense if Electrocoin wants to become a regional trading venue.</li>
+        </ol>
+      </section>
+
+      <section class="card s12">
+        <p class="ttl">Capital classes under MiCA</p>
+        <div class="tw" style="margin-top:12px">
+          <table>
+            <thead><tr><th>Class</th><th>Minimum capital</th><th style="text-align:left">Services</th></tr></thead>
+            <tbody>
+              <tr><td>Class 1</td><td>€50,000</td><td style="text-align:left;white-space:normal">Execution of orders, placing, transfer services, reception and transmission of orders, advice, portfolio management</td></tr>
+              <tr><td><b>Class 2</b> (Electrocoin)</td><td>€125,000</td><td style="text-align:left;white-space:normal">Everything in Class 1 plus custody, exchange for funds and exchange for other crypto-assets</td></tr>
+              <tr><td>Class 3</td><td>€150,000</td><td style="text-align:left;white-space:normal">Everything in Class 2 plus operation of a trading platform</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Annex IV of the MiCA Regulation. An insurance policy or guarantee may also be used in part instead of capital (Art. 67(4))<sup><a href="#s63">63</a></sup>.</p>
+      </section>
+    </div>
+
     <section class="card" id="izvori">
       <p class="ttl">Sources</p>
       <div class="cap">Figures in the text are marked with a source number. Compiled 9 October 2026.</div>
@@ -761,6 +890,14 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <li id="s57"><a href="https://lidermedia.hr/poslovna-scena/hrvatska/electrocoin-i-dok-trziste-pada-njegovi-prihodi-znatno-rastu-134335/" target="_blank" rel="noopener">Lider: Electrocoin's revenue grows even as the market falls (3 December 2020)</a></li>
         <li id="s58"><a href="https://hanfa.hr/news/hanfa-board-meeting-electrocoin-doo-becomes-the-first-company-to-obtain-hanfa-s-authorisation-to-operate-in-accordance-with-mica/" target="_blank" rel="noopener">HANFA: Electrocoin the first company authorised to operate under MiCA (9 April 2026)</a></li>
         <li id="s59"><a href="https://paymentproviders.io/registry/mica/747800R015JVW1T4WZ71" target="_blank" rel="noopener">PaymentProviders.io: ESMA MiCA register, Electrocoin (as of 17 September 2026)</a></li>
+        <li id="s60"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/article-59/" target="_blank" rel="noopener">MiCA Regulation, Art. 59: authorisation and extension (para. 8)</a></li>
+        <li id="s61"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/article-62/" target="_blank" rel="noopener">MiCA Regulation, Art. 62: content of the application</a></li>
+        <li id="s62"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/article-63/" target="_blank" rel="noopener">MiCA Regulation, Art. 63: assessment and deadlines</a></li>
+        <li id="s63"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/annex-4/" target="_blank" rel="noopener">MiCA Regulation, Art. 67 and Annex IV: minimum capital by class</a></li>
+        <li id="s64"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/" target="_blank" rel="noopener">MiCA Regulation, Art. 75–82: rules for individual services</a></li>
+        <li id="s65"><a href="https://narodne-novine.nn.hr/clanci/sluzbeni/2025_06_95_1300.html" target="_blank" rel="noopener">HANFA: Ordinance on authorisation of crypto-asset service providers (OG 95/2025)</a></li>
+        <li id="s66"><a href="https://www.hanfa.hr/licenciranje/odobrenja-za-drustva-iz-nadleznosti-hanfe/" target="_blank" rel="noopener">HANFA: licensing and application form</a></li>
+        <li id="s67"><a href="https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_157_2374.html" target="_blank" rel="noopener">HANFA: Ordinance on types and amounts of fees (OG 157/2025)</a></li>
       </ol>
     </section>
   </main>
@@ -772,7 +909,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
   const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
 
   // Navigation between pages
-  const pages = { onama: "About", usluge: "Services", rast: "Growth" };
+  const pages = { onama: "About", usluge: "Services", rast: "Growth", mica: "MiCA licence" };
   function show(id, jump) {
     if (!pages[id]) id = "onama";
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
@@ -801,7 +938,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
 
   // Decorative blocks as in the design
   const B = "e e e e y e e e e l y y e e l g g l e l g g g o l g g g g g".split(" ");
-  ["art", "art2", "art3"].forEach(id => document.getElementById(id).innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
+  ["art", "art2", "art3", "art4"].forEach(id => document.getElementById(id).innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
 
   // Simple bar chart; the last bar is highlighted
   function bars(id, data, { max, ticks, fmt = v => v, hi = "var(--green)", W = 400, H, bw }) {

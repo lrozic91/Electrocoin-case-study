@@ -207,7 +207,7 @@ table.vasp td:last-child{white-space:normal;min-width:220px;color:var(--muted)}
 .deal p{margin:0;font-size:13px}
 .deal .why{background:var(--soft);border-radius:10px;padding:8px 10px}
 .deal-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.fit{font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px}
+.fit{font-size:11px;font-weight:700;border-radius:99px;padding:2px 9px;white-space:nowrap;flex:none}
 .deal.hi .fit{background:var(--green);color:#16170f}.deal.mid .fit{background:var(--yellow);color:#16170f}.deal.lo .fit{background:var(--orange);color:#16170f}
 table.matrix td,table.matrix th{text-align:left;white-space:normal;min-width:96px}
 table.matrix th small{color:var(--faint);font-weight:500}
@@ -271,6 +271,12 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <a href="#rast" data-jump="konkurencija">Konkurencija</a>
         <a href="#rast" data-jump="prijedlozi">Prijedlozi</a>
       </div>
+      <a href="#mica" data-page="mica"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>MiCA licenca</a>
+      <div class="sub">
+        <a href="#mica" data-jump="mica-ima">Usluge koje ima</a>
+        <a href="#mica" data-jump="mica-nema">Usluge koje nema</a>
+        <a href="#mica" data-jump="mica-kako">Kako proširiti licencu</a>
+      </div>
     </nav>
     <div class="hr"></div>
     <nav class="nav" aria-label="Ostalo">
@@ -287,7 +293,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
   <main class="main">
     <header class="top">
       <div class="crumb">Electrocoin.eu <span>/</span> <b id="crumb">O nama</b></div>
-      <nav class="tabs" aria-label="Stranice"><a href="#onama" data-page="onama">O nama</a><a href="#usluge" data-page="usluge">Djelatnosti</a><a href="#rast" data-page="rast">Rast</a></nav>
+      <nav class="tabs" aria-label="Stranice"><a href="#onama" data-page="onama">O nama</a><a href="#usluge" data-page="usluge">Djelatnosti</a><a href="#rast" data-page="rast">Rast</a><a href="#mica" data-page="mica">MiCA licenca</a></nav>
       <span class="sp"></span>
       <a class="pill" id="lang" href="en.html" hreflang="en" lang="en" title="English version">EN</a>
       <a class="pill" href="https://paycek.io/" target="_blank" rel="noopener">PayCek ↗</a>
@@ -698,6 +704,129 @@ table.matrix td:nth-child(2){background:var(--soft)}
       </section>
     </div>
 
+    <!-- ============ STRANICA 4: MICA LICENCA ============ -->
+    <div class="grid" id="p-mica" hidden>
+      <section class="card s12">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">MiCA licenca · usluge i proširenje</div>
+            <h1>Tri od deset usluga. Ostalih sedam traže proširenje licence.</h1>
+            <p class="lead">Uredba MiCA propisuje deset usluga povezanih s kriptoimovinom, a licenca svakoj tvrtki navodi točno koje smije pružati<sup><a href="#s60">60</a></sup>. Electrocoin ima tri: pohranu, zamjenu kripta za novac i zamjenu kripta za kripto<sup><a href="#s28">28</a></sup><sup><a href="#s58">58</a></sup>. Za svaku novu uslugu mora od Hanfe zatražiti proširenje licence.</p>
+          </div>
+          <div class="art" aria-hidden="true" id="art4"></div>
+        </div>
+      </section>
+
+      <section class="card s3 kpi"><div class="cap">Odobrene usluge</div><div class="big num">3 od 10</div><div class="up">KI1, KI3 i KI4<sup><a href="#s28">28</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Razred kapitala</div><div class="big num">2. razred</div><div class="up">najmanje €125.000<sup><a href="#s63">63</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Odluka Hanfe</div><div class="big num">40 dana</div><div class="up">radnih, od potpunog zahtjeva<sup><a href="#s62">62</a></sup></div></section>
+      <section class="card s3 kpi"><div class="cap">Kapital tvrtke (2025.)</div><div class="big num">€836.766</div><div class="up">dovoljno i za 3. razred<sup><a href="#s7">7</a></sup></div></section>
+
+      <section class="card s12" id="mica-ima">
+        <div class="hd"><div><p class="ttl">1. Usluge koje Electrocoin smije pružati</p><div class="cap">Odobreno rješenjem Hanfe od 9. travnja 2026.</div></div></div>
+        <div class="deals">
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI1 · Pohrana i upravljanje kriptoimovinom u ime klijenata</h3><span class="fit">ima</span></div>
+            <p>Tvrtka čuva kriptovalute klijenata i upravlja pristupom njima, umjesto da klijent sam čuva privatne ključeve. Mora imati ugovor o pohrani, politiku pohrane i odvojenu imovinu klijenata, a odgovara za gubitak (čl. 75.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjer kod Electrocoina:</b> kupljeni bitcoin ostaje na korisnikovu računu na electrocoin.eu, bez vlastitog novčanika i ključeva<sup><a href="#s20">20</a></sup>.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI3 · Zamjena kriptoimovine za novčana sredstva</h3><span class="fit">ima</span></div>
+            <p>Kupnja i prodaja kripta za eure. Tvrtka mora imati nediskriminirajuću poslovnu politiku i objaviti cijenu ili način njezina izračuna (čl. 77.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjer kod Electrocoina:</b> kupnja kripta karticom ili uplatom na račun, gotovinom u 55 poslovnica Hrvatske pošte i isplata eura na IBAN za 15–60 minuta<sup><a href="#s20">20</a></sup><sup><a href="#s17">17</a></sup>. Na istoj usluzi radi i PayCek: kupac plaća kriptom, a trgovac dobiva eure<sup><a href="#s14">14</a></sup>.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI4 · Zamjena kriptoimovine za drugu kriptoimovinu</h3><span class="fit">ima</span></div>
+            <p>Izravna zamjena jedne kriptovalute za drugu, bez prolaska kroz eure. Vrijede ista pravila o cijeni i objavi transakcija kao za KI3 (čl. 77.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjer kod Electrocoina:</b> zamjena bitcoina za ether ili USDC unutar ponude od 60+ kriptovaluta<sup><a href="#s20">20</a></sup>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card s12" id="mica-nema">
+        <div class="hd"><div><p class="ttl">2. Usluge koje Electrocoin još ne smije pružati</p><div class="cap">Što usluga znači i primjeri djelatnosti koje bi omogućila</div></div></div>
+        <div class="deals">
+          <article class="deal lo">
+            <div class="deal-h"><h3>KI2 · Upravljanje platformom za trgovanje</h3><span class="fit">nema</span></div>
+            <p>Burza na kojoj se kupci i prodavatelji međusobno spajaju preko knjige naloga. Traži pravila rada, provjeru kriptoimovine prije uvrštenja, otporne sustave i javne cijene prije i nakon trgovanja; trgovanje za vlastiti račun nije dopušteno (čl. 76.)<sup><a href="#s64">64</a></sup>. Diže tvrtku u 3. razred kapitala (€150.000)<sup><a href="#s63">63</a></sup>.</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> burza s knjigom naloga poput Krakena ili Bitstampa; regionalna burza za tokene domaćih tvrtki, kakvu je pokušala Adria Digital Exchange<sup><a href="#s35">35</a></sup>.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI5 · Izvršavanje naloga u ime klijenata</h3><span class="fit">nema</span></div>
+            <p>Tvrtka izvršava klijentov nalog na drugom mjestu trgovanja, uz obvezu najboljeg izvršenja i politiku izvršavanja na koju klijent pristaje (čl. 78.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> limit i stop nalozi koji se izvršavaju na vanjskim burzama; posredovanje za velike kupnje (OTC) preko više burzi radi najbolje cijene.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI6 · Plasiranje kriptoimovine</h3><span class="fit">nema</span></div>
+            <p>Prodaja novih tokena kupcima u ime izdavatelja. Prije ugovora izdavatelja se mora obavijestiti o načinu plasmana, naknadama, rokovima, cijeni i ciljanim kupcima, a sukobe interesa treba posebno urediti (čl. 79.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> distribucija euro stablecoina ili tokena domaće tvrtke vlastitim klijentima; tokenizirane obveznice. U Hrvatskoj je ima Digital Assets (Bitcoin Store)<sup><a href="#s28">28</a></sup>.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI7 · Zaprimanje i prijenos naloga</h3><span class="fit">nema</span></div>
+            <p>Tvrtka prima nalog od klijenta i prosljeđuje ga drugome na izvršenje. Nalozi se moraju prosljeđivati brzo i ispravno, bez naknada za usmjeravanje i bez zloupotrebe podataka o nalozima (čl. 80.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> aplikacija banke ili mjenjačnice koja naloge šalje partnerskoj burzi; posrednik za tvrtke koji skuplja naloge zaposlenika ili klijenata.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI8 · Savjetovanje o kriptoimovini</h3><span class="fit">nema</span></div>
+            <p>Osobne preporuke klijentu što kupiti ili prodati. Traži procjenu primjerenosti (znanje, ciljevi, financijska situacija), stručno osoblje, upozorenja o rizicima i izvještaj o primjerenosti (čl. 81.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> plaćene konzultacije za imućnije klijente i tvrtke koje ulaze u kripto. Opća edukacija, kakvu Electrocoin već radi, nije savjetovanje jer nije osobna preporuka.</p>
+          </article>
+          <article class="deal mid">
+            <div class="deal-h"><h3>KI9 · Upravljanje portfeljem</h3><span class="fit">nema</span></div>
+            <p>Tvrtka po vlastitoj procjeni upravlja klijentovim kriptom prema dogovorenom mandatu. Vrijede ista pravila primjerenosti kao za savjetovanje, uz tromjesečne izvještaje klijentu (čl. 81.)<sup><a href="#s64">64</a></sup>.</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> gotovi portfelji (npr. 70% BTC, 30% ETH) s automatskim uravnoteženjem; kripto indeks za klijente koji ne žele sami birati.</p>
+          </article>
+          <article class="deal hi">
+            <div class="deal-h"><h3>KI10 · Prijenos kriptoimovine u ime klijenata</h3><span class="fit">nema</span></div>
+            <p>Slanje kripta s jedne adrese ili računa na drugi u ime klijenta. Traži pisani ugovor s klijentom o načinu rada, sigurnosti, naknadama i mjerodavnom pravu (čl. 82.)<sup><a href="#s64">64</a></sup>, uz pravilo o praćenju prijenosa (travel rule).</p>
+            <p class="why"><b>Primjeri djelatnosti:</b> slanje kripta na vanjski novčanik ili drugom korisniku; isplate trgovcima i zaposlenicima u stablecoinima preko PayCeka. Imaju je Digital Assets i White Tech<sup><a href="#s28">28</a></sup>.</p>
+          </article>
+        </div>
+        <p class="note">Boja oznake je moja procjena koliko bi usluga odgovarala Electrocoinu: zelena znači dobar spoj s postojećim poslom, žuta srednji, a narančasta velik korak.</p>
+      </section>
+
+      <section class="card s7" id="mica-kako">
+        <p class="ttl">3. Kako doći do licence za ostale usluge</p>
+        <div class="cap">Proširenje postojeće licence, a ne novi zahtjev od početka</div>
+        <ol class="tl">
+          <li class="k"><span class="yr">Korak 1</span><span class="dot"></span><div><h3>Zahtjev za proširenje</h3><p>Tvrtka s licencom traži proširenje od Hanfe, koja joj je dala prvu licencu, tako da dopuni i ažurira podatke iz zahtjeva iz čl. 62. Zahtjev se obrađuje istim postupkom kao prvi (čl. 59. st. 8.)<sup><a href="#s60">60</a></sup><sup><a href="#s61">61</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Korak 2</span><span class="dot"></span><div><h3>Dokumentacija samo za novo</h3><p>Prilaže se samo ono što se odnosi na novu uslugu i što se promijenilo, jasno označeno. Ono što Hanfa već ima ne šalje se ponovno ako tvrtka pisano potvrdi da je i dalje točno (Pravilnik NN 95/2025, čl. 5.)<sup><a href="#s65">65</a></sup>. Za svaku uslugu postoji poseban dio: politika izvršavanja za KI5, pravila platforme za KI2, stručnost osoblja za KI8 i KI9, opis prijenosa za KI10<sup><a href="#s61">61</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Korak 3</span><span class="dot"></span><div><h3>Provjera kapitala</h3><p>Kapital mora biti veći od dva iznosa: najniži iznos za razred ili četvrtina fiksnih troškova iz prošle godine (čl. 67.)<sup><a href="#s63">63</a></sup>. Electrocoin je već u 2. razredu, pa KI5–KI10 ne mijenjaju razred. Samo KI2 traži 3. razred od €150.000, a kapital tvrtke od €836.766 to već pokriva<sup><a href="#s7">7</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Korak 4</span><span class="dot"></span><div><h3>Predaja Hanfi</h3><p>Zahtjev na propisanom obrascu, s dokazom o plaćenoj naknadi, šalje se Hanfi<sup><a href="#s66">66</a></sup><sup><a href="#s65">65</a></sup>.</p></div></li>
+          <li class="k"><span class="yr">Korak 5</span><span class="dot"></span><div><h3>Rokovi Hanfe</h3><p>Potvrda primitka u 5 radnih dana, provjera potpunosti u 25 radnih dana i odluka u 40 radnih dana od potpunog zahtjeva. Hanfa može tražiti dodatne podatke do 20. radnog dana, a rok tada stoji najviše 20 radnih dana (čl. 63.)<sup><a href="#s62">62</a></sup>. Realno je računati na 3 do 5 mjeseci od predaje.</p></div></li>
+          <li class="m"><span class="yr">Korak 6</span><span class="dot"></span><div><h3>Upis i početak rada</h3><p>Nova usluga upisuje se u Hanfin registar i ESMA-in registar, a za pružanje u drugim državama EGP-a koristi se postojeća putovnica<sup><a href="#s28">28</a></sup><sup><a href="#s6">6</a></sup>.</p></div></li>
+        </ol>
+        <p class="note">Iznos Hanfine naknade za zahtjev nisam uspio potvrditi; propisan je Pravilnikom o vrsti i visini naknada (NN 157/2025)<sup><a href="#s67">67</a></sup>. Procjena trajanja od 3 do 5 mjeseci je moja.</p>
+      </section>
+
+      <section class="card s5">
+        <p class="ttl">4. Što bi imalo smisla prvo</p>
+        <div class="cap">Moja procjena, ne plan tvrtke</div>
+        <ol class="ideas">
+          <li><b>KI10, prijenos kripta.</b> Najbliže postojećem poslu i uvjet za isplate u stablecoinima kroz PayCek. Dvojica domaćih konkurenata ga već imaju<sup><a href="#s28">28</a></sup>.</li>
+          <li><b>KI7 i KI5, nalozi.</b> Potrebni za modul za banke: banka zaprima nalog, a Electrocoin ga izvršava. Razred kapitala ostaje isti.</li>
+          <li><b>KI6, plasiranje.</b> Otvara suradnju s izdavateljima euro stablecoina i tokena. Ima ga Digital Assets<sup><a href="#s28">28</a></sup>.</li>
+          <li><b>KI8 i KI9, savjetovanje i portfelji.</b> Traže stručno osoblje i procjenu primjerenosti, ali bi edukaciju koju tvrtka već radi pretvorili u prihod.</li>
+          <li><b>KI2, burza.</b> Najveći korak: novi sustavi, pravila uvrštenja i 3. razred kapitala. Ima smisla tek ako Electrocoin želi postati regionalno mjesto trgovanja.</li>
+        </ol>
+      </section>
+
+      <section class="card s12">
+        <p class="ttl">Razredi kapitala prema MiCA-i</p>
+        <div class="tw" style="margin-top:12px">
+          <table>
+            <thead><tr><th>Razred</th><th>Najniži kapital</th><th style="text-align:left">Usluge</th></tr></thead>
+            <tbody>
+              <tr><td>1. razred</td><td>€50.000</td><td style="text-align:left;white-space:normal">Izvršavanje naloga, plasiranje, prijenos, zaprimanje i prijenos naloga, savjetovanje, upravljanje portfeljem</td></tr>
+              <tr><td><b>2. razred</b> (Electrocoin)</td><td>€125.000</td><td style="text-align:left;white-space:normal">Sve iz 1. razreda te pohrana, zamjena za novac i zamjena za drugu kriptoimovinu</td></tr>
+              <tr><td>3. razred</td><td>€150.000</td><td style="text-align:left;white-space:normal">Sve iz 2. razreda te upravljanje platformom za trgovanje</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Prilog IV. Uredbe MiCA. Umjesto kapitala može se dijelom koristiti i polica osiguranja ili jamstvo (čl. 67. st. 4.)<sup><a href="#s63">63</a></sup>.</p>
+      </section>
+    </div>
+
     <section class="card" id="izvori">
       <p class="ttl">Izvori</p>
       <div class="cap">Brojke u tekstu označene su brojem izvora. Prikupljeno 9. listopada 2026.</div>
@@ -761,6 +890,14 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <li id="s57"><a href="https://lidermedia.hr/poslovna-scena/hrvatska/electrocoin-i-dok-trziste-pada-njegovi-prihodi-znatno-rastu-134335/" target="_blank" rel="noopener">Lider: Electrocoin, i dok tržište pada, njegovi prihodi rastu (3. 12. 2020.)</a></li>
         <li id="s58"><a href="https://hanfa.hr/news/hanfa-board-meeting-electrocoin-doo-becomes-the-first-company-to-obtain-hanfa-s-authorisation-to-operate-in-accordance-with-mica/" target="_blank" rel="noopener">HANFA: Electrocoin prva tvrtka s odobrenjem za rad prema MiCA-i (9. 4. 2026.)</a></li>
         <li id="s59"><a href="https://paymentproviders.io/registry/mica/747800R015JVW1T4WZ71" target="_blank" rel="noopener">PaymentProviders.io: ESMA MiCA registar, Electrocoin (stanje 17. 9. 2026.)</a></li>
+        <li id="s60"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/article-59/" target="_blank" rel="noopener">Uredba MiCA, čl. 59.: odobrenje za rad i proširenje (st. 8.)</a></li>
+        <li id="s61"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/article-62/" target="_blank" rel="noopener">Uredba MiCA, čl. 62.: sadržaj zahtjeva za odobrenje</a></li>
+        <li id="s62"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/article-63/" target="_blank" rel="noopener">Uredba MiCA, čl. 63.: ocjena zahtjeva i rokovi</a></li>
+        <li id="s63"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/annex-4/" target="_blank" rel="noopener">Uredba MiCA, čl. 67. i Prilog IV.: najniži kapital po razredima</a></li>
+        <li id="s64"><a href="https://www.springlex.eu/en/packages/mica/mica-regulation/" target="_blank" rel="noopener">Uredba MiCA, čl. 75.–82.: pravila za pojedine usluge</a></li>
+        <li id="s65"><a href="https://narodne-novine.nn.hr/clanci/sluzbeni/2025_06_95_1300.html" target="_blank" rel="noopener">Hanfa: Pravilnik o izdavanju odobrenja za rad pružatelju usluga povezanih s kriptoimovinom (NN 95/2025)</a></li>
+        <li id="s66"><a href="https://www.hanfa.hr/licenciranje/odobrenja-za-drustva-iz-nadleznosti-hanfe/" target="_blank" rel="noopener">Hanfa: licenciranje i obrazac zahtjeva</a></li>
+        <li id="s67"><a href="https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_157_2374.html" target="_blank" rel="noopener">Hanfa: Pravilnik o vrsti i visini naknada (NN 157/2025)</a></li>
       </ol>
     </section>
   </main>
@@ -772,7 +909,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
   const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
 
   // Navigacija između dviju stranica
-  const pages = { onama: "O nama", usluge: "Djelatnosti", rast: "Rast" };
+  const pages = { onama: "O nama", usluge: "Djelatnosti", rast: "Rast", mica: "MiCA licenca" };
   function show(id, jump) {
     if (!pages[id]) id = "onama";
     for (const k in pages) document.getElementById("p-" + k).hidden = k !== id;
@@ -801,7 +938,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
 
   // Dekorativni blokovi kao u dizajnu
   const B = "e e e e y e e e e l y y e e l g g l e l g g g o l g g g g g".split(" ");
-  ["art", "art2", "art3"].forEach(id => document.getElementById(id).innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
+  ["art", "art2", "art3", "art4"].forEach(id => document.getElementById(id).innerHTML = B.map(c => `<i class="${c === "g" ? "" : c}"></i>`).join(""));
 
   // Jednostavan stupčasti graf; zadnji stupac je istaknut
   function bars(id, data, { max, ticks, fmt = v => v, hi = "var(--green)", W = 400, H, bw }) {
