@@ -102,9 +102,10 @@ sup+sup::before{content:",";font-size:10px;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .sw{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
 .note{font-size:12px;color:var(--muted);margin:10px 0 0}
-.rev{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
-.rev .eyebrow{font-size:10px;margin-bottom:4px}
-@media (max-width:420px){.rev{grid-template-columns:1fr}}
+.rev{display:grid;grid-template-columns:1fr;gap:18px;margin-top:12px}
+.rev .eyebrow{font-size:11px;margin-bottom:4px}
+.chart.lg text{font-size:14px}
+.chart.lg text.v{font-size:17px;font-weight:700}
 
 /* Vremenska crta */
 .tl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:0}
@@ -326,8 +327,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <section class="card">
           <div class="hd"><div><p class="ttl">Prihod kroz godine</p><div class="cap">Milijuni eura</div></div></div>
           <div class="rev">
-            <div><div class="eyebrow">2019.–2021. · prema medijima</div><svg class="chart" id="ch-rev1" viewBox="0 0 400 200" role="img" aria-label="Prihod: 2019. oko 34,5 milijuna eura, 2020. 43,8 milijuna, 2021. 79,6 milijuna"></svg></div>
-            <div><div class="eyebrow">2023.–2025. · službeni izvještaji</div><svg class="chart" id="ch-rev2" viewBox="0 0 400 200" role="img" aria-label="Prihod: 2023. 1,28 milijuna eura, 2024. 1,34 milijuna, 2025. 1,18 milijuna"></svg></div>
+            <div><div class="eyebrow">2019.–2021. · prema medijima</div><svg class="chart lg" id="ch-rev1" viewBox="0 0 400 190" role="img" aria-label="Prihod: 2019. oko 34,5 milijuna eura, 2020. 43,8 milijuna, 2021. 79,6 milijuna"></svg></div>
+            <div><div class="eyebrow">2023.–2025. · službeni izvještaji</div><svg class="chart lg" id="ch-rev2" viewBox="0 0 400 190" role="img" aria-label="Prihod: 2023. 1,28 milijuna eura, 2024. 1,34 milijuna, 2025. 1,18 milijuna"></svg></div>
           </div>
           <p class="note">Grafovi imaju različita mjerila. Do 2021. prihod uključuje vrijednost prodane kriptovalute; od 2023. izvještaji, kako zaključujem, prikazuju samo zaradu tvrtke. Za 2022. podatak nije javno dostupan. 2021. je 600 mil. kn prema Lideru (Bloomberg Adria navodi 545+ mil. kn). Preračunato po 7,5345 kn/€. Izvori: <a href="#s52">52</a>, <a href="#s51">51</a>, <a href="#s13">13</a>, <a href="#s7">7</a>, <a href="#s53">53</a>.</p>
         </section>
@@ -769,8 +770,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
   }
   bars("ch-turnover", [["2018.", 30, "~30"], ["2020.", 43.8, "43,8"], ["2021.", 72.3, "72,3"]], { max: 80, ticks: [0, 20, 40, 60, 80], fmt: t => "€" + t + " mil.", H: 220, bw: 64 });
   bars("ch-staff", [["2017.", 7], ["2021.", 18], ["2022.", 28], ["2023.", 29], ["2024.", 27], ["2025.", 28]], { max: 30, ticks: [0, 10, 20, 30], hi: "var(--yellow)", H: 180, bw: 36 });
-  bars("ch-rev1", [["2019.", 34.5, "34,5"], ["2020.", 43.8, "43,8"], ["2021.", 79.6, "79,6"]], { max: 80, ticks: [0, 40, 80], fmt: t => "€" + t, H: 200, bw: 64 });
-  bars("ch-rev2", [["2023.", 1.28, "1,28"], ["2024.", 1.34, "1,34"], ["2025.", 1.18, "1,18"]], { max: 1.5, ticks: [0, 0.5, 1, 1.5], fmt: t => "€" + t, hi: "var(--orange)", H: 200, bw: 64 });
+  bars("ch-rev1", [["2019.", 34.5, "34,5"], ["2020.", 43.8, "43,8"], ["2021.", 79.6, "79,6"]], { max: 80, ticks: [0, 40, 80], fmt: t => "€" + t + " mil.", H: 190, bw: 80 });
+  bars("ch-rev2", [["2023.", 1.28, "1,28"], ["2024.", 1.34, "1,34"], ["2025.", 1.18, "1,18"]], { max: 1.5, ticks: [0, 0.5, 1, 1.5], fmt: t => "€" + t + " mil.", hi: "var(--orange)", H: 190, bw: 80 });
   bars("ch-coins", [["2021.", 30, "~30"], ["2022.", 35], ["2026.", 60, "60+"]], { max: 60, ticks: [0, 20, 40, 60], hi: "var(--orange)", H: 150, bw: 56 });
 
   // Udio bitcoina
