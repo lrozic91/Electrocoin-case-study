@@ -78,6 +78,7 @@ a{color:inherit}
 
 .grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr));align-content:start}
 .card{background:var(--card);border-radius:var(--r);padding:20px 22px;min-width:0;box-shadow:var(--shadow)}
+.colstack{display:flex;flex-direction:column;gap:16px;min-width:0}.colstack>:last-child{flex:1}
 .s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s6{grid-column:span 6}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}
 .hd{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .ttl{font-weight:600;font-size:16px;margin:0;text-wrap:balance}
@@ -452,7 +453,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
       <section class="card s3 kpi"><div class="cap">Payout to IBAN</div><div class="big num">15–60 min</div><div class="up">depending on the bank<sup><a href="#s20">20</a></sup></div></section>
       <section class="card s3 kpi"><div class="cap">Support</div><div class="big num">24/7</div><div class="up">in Croatian<sup><a href="#s20">20</a></sup></div></section>
 
-      <section class="card s7" id="mjenjacnica">
+      <div class="s7 colstack">
+        <section class="card" id="mjenjacnica">
         <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><div><p class="ttl">1. Crypto exchange for individuals</p><div class="cap">The electrocoin.eu platform, formerly bitcoin-mjenjacnica.hr</div></div></div>
         <p>The core business since 2014. Users buy, sell and exchange crypto without managing private keys, because Electrocoin holds the assets on the client's behalf, which its MiCA licence expressly permits<sup><a href="#s1">1</a></sup><sup><a href="#s20">20</a></sup>. The company has described the platform as "a simpler version of Coinbase"<sup><a href="#s10">10</a></sup>.</p>
         <ul class="ul">
@@ -471,8 +473,18 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
         <p class="note">Registration takes about 8 minutes, according to a test by Projekt Hrvatska<sup><a href="#s20">20</a></sup>. Electrocoin does not offer Monero or Bitcoin SV for reputational reasons<sup><a href="#s9">9</a></sup>.</p>
       </section>
+        <section class="card">
+          <p class="ttl">Where clients come from</p>
+          <div class="cap">Share of turnover by market</div>
+          <div style="display:grid;gap:10px;margin-top:12px">
+            <div><div class="hd cap"><span>From the EU, including Croatia (2021)</span><b style="color:var(--fg)">~95%</b></div><div class="meter"><i style="width:95%"></i></div></div>
+            <div><div class="hd cap"><span>Croatia vs. rest of the EU</span><b style="color:var(--fg)">50 / 50</b></div><div class="meter"><i style="width:50%;background-color:var(--yellow)"></i></div></div>
+          </div>
+          <p class="note">Sources: <a href="#s9">9</a>, <a href="#s10">10</a>.</p>
+        </section>
+      </div>
 
-      <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
+      <div class="s5 colstack">
         <section class="card">
           <p class="ttl">Trading mix</p>
           <div class="cap">Share of cryptocurrencies in exchange turnover and PayCek payments</div>
@@ -486,20 +498,12 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Bitcoin</span><span><i class="sw" style="background:var(--yellow)"></i>USDT</span><span><i class="sw" style="background:var(--orange)"></i>Ether</span><span><i class="sw" style="background:#c9e59f"></i>XRP</span><span><i class="sw" style="background:var(--bar)"></i>Other</span></div>
           <p class="note">A dashed outline marks an estimate. Until September 2017 the exchange offered only bitcoin<sup><a href="#s74">74</a></sup><sup><a href="#s73">73</a></sup>, and in 2018 it added ether for buying only<sup><a href="#s75">75</a></sup>, so bitcoin's share was almost total. Around 2020 bitcoin was more than 80% of turnover<sup><a href="#s52">52</a></sup><sup><a href="#s9">9</a></sup>, and by late 2023 about 55%, while USDT grew to 27%<sup><a href="#s72">72</a></sup>. The 2023 figures are Škorić's numbers in Forbes from January 2024, with no exact period. I found no breakdown for 2019, 2021, 2022 or 2024–2026; in 2025 Electrocoin still offers USDT and USDC<sup><a href="#s76">76</a></sup>.</p>
         </section>
+        
         <section class="card">
           <p class="ttl">Growing crypto offering</p>
           <div class="cap">Number of cryptocurrencies on the exchange</div>
           <svg class="chart" id="ch-coins" viewBox="0 0 400 150" role="img" aria-label="Cryptocurrencies on the exchange: one in 2014, two in 2017, more than 25 in 2019, 27 in 2021, 35 in 2022, more than 60 in 2026"></svg>
           <p class="note">Sources: <a href="#s74">74</a>, <a href="#s73">73</a>, <a href="#s52">52</a>, <a href="#s24">24</a>, <a href="#s20">20</a>.</p>
-        </section>
-        <section class="card">
-          <p class="ttl">Where clients come from</p>
-          <div class="cap">Share of turnover by market</div>
-          <div style="display:grid;gap:10px;margin-top:12px">
-            <div><div class="hd cap"><span>From the EU, including Croatia (2021)</span><b style="color:var(--fg)">~95%</b></div><div class="meter"><i style="width:95%"></i></div></div>
-            <div><div class="hd cap"><span>Croatia vs. rest of the EU</span><b style="color:var(--fg)">50 / 50</b></div><div class="meter"><i style="width:50%;background-color:var(--yellow)"></i></div></div>
-          </div>
-          <p class="note">Sources: <a href="#s9">9</a>, <a href="#s10">10</a>.</p>
         </section>
       </div>
 

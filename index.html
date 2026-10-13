@@ -78,6 +78,7 @@ a{color:inherit}
 
 .grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr));align-content:start}
 .card{background:var(--card);border-radius:var(--r);padding:20px 22px;min-width:0;box-shadow:var(--shadow)}
+.colstack{display:flex;flex-direction:column;gap:16px;min-width:0}.colstack>:last-child{flex:1}
 .s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s6{grid-column:span 6}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}
 .hd{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .ttl{font-weight:600;font-size:16px;margin:0;text-wrap:balance}
@@ -453,7 +454,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
       <section class="card s3 kpi"><div class="cap">Isplata na IBAN</div><div class="big num">15–60 min</div><div class="up">ovisno o banci<sup><a href="#s20">20</a></sup></div></section>
       <section class="card s3 kpi"><div class="cap">Podrška</div><div class="big num">24/7</div><div class="up">na hrvatskom jeziku<sup><a href="#s20">20</a></sup></div></section>
 
-      <section class="card s7" id="mjenjacnica">
+      <div class="s7 colstack">
+        <section class="card" id="mjenjacnica">
         <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span><div><p class="ttl">1. Kripto mjenjačnica za građane</p><div class="cap">Platforma electrocoin.eu, nekad bitcoin-mjenjacnica.hr</div></div></div>
         <p>Jezgra poslovanja od 2014. Korisnik kupuje, prodaje i mijenja kriptovalute bez upravljanja privatnim ključevima, jer Electrocoin čuva imovinu u ime klijenta, što MiCA licenca izričito dopušta<sup><a href="#s1">1</a></sup><sup><a href="#s20">20</a></sup>. Tvrtka je platformu opisala kao „jednostavniju verziju Coinbasea“<sup><a href="#s10">10</a></sup>.</p>
         <ul class="ul">
@@ -472,8 +474,18 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
         <p class="note">Registracija traje oko 8 minuta prema testu Projekta Hrvatska<sup><a href="#s20">20</a></sup>. Electrocoin ne nudi Monero ni Bitcoin SV iz reputacijskih razloga<sup><a href="#s9">9</a></sup>.</p>
       </section>
+        <section class="card">
+          <p class="ttl">Odakle dolaze klijenti</p>
+          <div class="cap">Udio prometa po tržištu</div>
+          <div style="display:grid;gap:10px;margin-top:12px">
+            <div><div class="hd cap"><span>Iz EU uključujući Hrvatsku (2021.)</span><b style="color:var(--fg)">~95%</b></div><div class="meter"><i style="width:95%"></i></div></div>
+            <div><div class="hd cap"><span>Hrvatska prema ostatku EU</span><b style="color:var(--fg)">50 / 50</b></div><div class="meter"><i style="width:50%;background-color:var(--yellow)"></i></div></div>
+          </div>
+          <p class="note">Izvori: <a href="#s9">9</a>, <a href="#s10">10</a>.</p>
+        </section>
+      </div>
 
-      <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
+      <div class="s5 colstack">
         <section class="card">
           <p class="ttl">Struktura trgovanja</p>
           <div class="cap">Udio kriptovaluta u prometu mjenjačnice i u PayCek plaćanjima</div>
@@ -487,20 +499,12 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Bitcoin</span><span><i class="sw" style="background:var(--yellow)"></i>USDT</span><span><i class="sw" style="background:var(--orange)"></i>Ether</span><span><i class="sw" style="background:#c9e59f"></i>XRP</span><span><i class="sw" style="background:var(--bar)"></i>Ostalo</span></div>
           <p class="note">Isprekidani rub znači procjenu. Do rujna 2017. mjenjačnica je nudila samo bitcoin<sup><a href="#s74">74</a></sup><sup><a href="#s73">73</a></sup>, a 2018. uz njega ether samo za kupnju<sup><a href="#s75">75</a></sup>, pa je udio bitcoina bio gotovo potpun. Oko 2020. bitcoin je bio više od 80 % prometa<sup><a href="#s52">52</a></sup><sup><a href="#s9">9</a></sup>, a krajem 2023. oko 55 %, dok je USDT narastao na 27 %<sup><a href="#s72">72</a></sup>. Podaci za 2023. su Škorićeve brojke u Forbesu iz siječnja 2024., bez točnog razdoblja. Za 2019., 2021., 2022. i 2024.–2026. raspodjelu nisam našao; 2025. Electrocoin i dalje nudi USDT i USDC<sup><a href="#s76">76</a></sup>.</p>
         </section>
+        
         <section class="card">
           <p class="ttl">Rast ponude kriptovaluta</p>
           <div class="cap">Broj kriptovaluta na mjenjačnici</div>
           <svg class="chart" id="ch-coins" viewBox="0 0 400 150" role="img" aria-label="Kriptovalute na mjenjačnici: 2014. jedna, 2017. dvije, 2019. više od 25, 2021. 27, 2022. 35, 2026. više od 60"></svg>
           <p class="note">Izvori: <a href="#s74">74</a>, <a href="#s73">73</a>, <a href="#s52">52</a>, <a href="#s24">24</a>, <a href="#s20">20</a>.</p>
-        </section>
-        <section class="card">
-          <p class="ttl">Odakle dolaze klijenti</p>
-          <div class="cap">Udio prometa po tržištu</div>
-          <div style="display:grid;gap:10px;margin-top:12px">
-            <div><div class="hd cap"><span>Iz EU uključujući Hrvatsku (2021.)</span><b style="color:var(--fg)">~95%</b></div><div class="meter"><i style="width:95%"></i></div></div>
-            <div><div class="hd cap"><span>Hrvatska prema ostatku EU</span><b style="color:var(--fg)">50 / 50</b></div><div class="meter"><i style="width:50%;background-color:var(--yellow)"></i></div></div>
-          </div>
-          <p class="note">Izvori: <a href="#s9">9</a>, <a href="#s10">10</a>.</p>
         </section>
       </div>
 
