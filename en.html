@@ -327,7 +327,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
       <section class="card s3 kpi"><div class="cap">Employees (2025)</div><div class="big num">28</div><div class="up">7 employees in 2017<sup><a href="#s10">10</a></sup></div></section>
       <section class="card s3 kpi"><div class="cap">MiCA business licence</div><div class="big num">30 countries</div><div class="up">the entire EEA<sup><a href="#s6">6</a></sup></div></section>
 
-      <section class="card s7" id="razvoj">
+      <div class="s7 colstack">
+        <section class="card" id="razvoj">
         <div class="hd"><div><p class="ttl">History</p><div class="cap">Key moments from idea to licence</div></div>
           <div class="legend"><span><i class="sw" style="background:var(--green)"></i>Milestone</span><span><i class="sw" style="background:var(--yellow)"></i>Regulation</span></div></div>
         <ol class="tl">
@@ -345,18 +346,37 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li class="m"><span class="yr">2026</span><span class="dot"></span><div><h3>Croatia's first MiCA licence</h3><p>On 9 April 2026, the HANFA Board authorises Electrocoin to operate as a crypto-asset service provider (CASP). The company is the first entry in the register and offers its services under its MiCA business licence in 30 EEA countries, including France from May 2026.<sup><a href="#s1">1</a></sup><sup><a href="#s5">5</a></sup><sup><a href="#s6">6</a></sup></p></div></li>
         </ol>
       </section>
-
-      <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
+        <section class="card" id="tim">
+        <p class="ttl">Team and owners</p>
+        <div class="cap">Based on the court register and public profiles</div>
+        <div class="people" style="margin-top:14px">
+          <div class="person"><span class="av" style="background:var(--green)">NŠ</span><div><b>Nikola Škorić</b><span>Co-founder, managing director and co-owner. Spent seven years in the nuclear industry before Electrocoin; has worked with cryptography since 2011. Co-founder of the Croatian Association for Blockchain and Cryptocurrencies (UBIK) and chair of the Money Motion conference.<sup><a href="#s9">9</a></sup><sup><a href="#s23">23</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--yellow)">MM</span><div><b>Marin Maržić</b><span>Co-founder, COO, authorised signatory (prokurist) and co-owner. Led the development of the platform's user experience and security.<sup><a href="#s8">8</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--orange)">IP</span><div><b>Ivan Pekarik</b><span>Head of Operations.<sup><a href="#s22">22</a></sup></span></div></div>
+        </div>
+        <p class="note">The third owner is EC Production Projects d.o.o.<sup><a href="#s8">8</a></sup></p>
+        <blockquote>“Merchants are never exposed to cryptocurrencies or their volatility.”<cite>Nikola Škorić to JaTrgovac, 2022<sup><a href="#s24">24</a></sup></cite></blockquote>
+      </section>
+        <section class="card">
+          <div class="hd"><div><p class="ttl">Headcount</p><div class="cap">From seven people to a team of 28</div></div></div>
+          <svg class="chart" id="ch-staff" viewBox="0 0 400 180" role="img" aria-label="Employees: 2017 7, 2021 18, 2022 28, 2023 29, 2024 27, 2025 28"></svg>
+          <p class="note">Sources: <a href="#s10">10</a>, <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s7">7</a>.</p>
+        </section>
+        <section class="card">
+          <p class="ttl">Clients and transactions</p>
+          <div style="display:grid;gap:12px;margin-top:12px">
+            <div><div class="hd cap"><span>Clients 2021 → 2026</span><b class="num" style="color:var(--fg)">25,000 → 40,000+</b></div><div class="meter"><i style="width:62.5%"></i></div></div>
+            <div><div class="hd cap"><span>Transactions 2021 → 2026</span><b class="num" style="color:var(--fg)">110,000 → 250,000+</b></div><div class="meter"><i style="width:44%;background-color:var(--yellow)"></i></div></div>
+          </div>
+          <p class="note">The bar shows the 2021 figure as a share of today's. Sources: <a href="#s9">9</a>, <a href="#s21">21</a>.</p>
+        </section>
+      </div>
+      <div class="s5 colstack">
         <section class="card">
           <div class="hd"><div><p class="ttl">Turnover over the years</p><div class="cap">€ millions, value of assets exchanged (gross)</div></div></div>
           <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Reported (Fina or media)</span><span><i class="sw est"></i>Estimate</span></div>
           <svg class="chart lg many" id="ch-turnover" viewBox="0 0 520 260" role="img" aria-label="Turnover in € millions: 2014 estimate about 0.03, 2015 0.46, 2016 1.35, 2017 27.5, 2018 27.6, 2019 34.5, 2020 43.8, 2021 79.6, 2022 76, 2023 estimate about 64, 2024 estimate about 67, 2025 estimate about 59"></svg>
           <p class="note"><b>Estimates:</b> 2014 is derived from Bloomberg's report that revenue grew 932-fold up to 2017<sup><a href="#s69">69</a></sup>. For 2023–2025 the company only reports its earnings, so I estimate turnover assuming it keeps about 2% of turnover (margin of 1–2%, PayCek fee of 2–2.5%)<sup><a href="#s56">56</a></sup><sup><a href="#s70">70</a></sup>. Cross-check: according to HANFA, all Croatian crypto exchanges together turned over €10.9m and €12.4m in January and February 2024<sup><a href="#s71">71</a></sup>, about €130–150m a year, so Electrocoin at an estimated ~€65m would hold about half the market. Up to 2022, turnover equals gross revenue because revenue included the value of crypto sold. Kuna converted at 7.5345. Sources: <a href="#s68">68</a>, <a href="#s69">69</a>, <a href="#s52">52</a>, <a href="#s51">51</a>, <a href="#s54">54</a>, <a href="#s7">7</a>.</p>
-        </section>
-        <section class="card">
-          <div class="hd"><div><p class="ttl">Headcount</p><div class="cap">From seven people to a team of 28</div></div></div>
-          <svg class="chart" id="ch-staff" viewBox="0 0 400 180" role="img" aria-label="Employees: 2017 7, 2021 18, 2022 28, 2023 29, 2024 27, 2025 28"></svg>
-          <p class="note">Sources: <a href="#s10">10</a>, <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s7">7</a>.</p>
         </section>
         <section class="card">
           <div class="hd"><div><p class="ttl">Revenue over the years</p><div class="cap">Company earnings (net), € millions</div></div></div>
@@ -384,28 +404,6 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <p class="note">Estimates for 2015–2022 are calculated from the turnover in the “Turnover over the years” chart. No figure is available for 2014.</p>
         </section>
         <section class="card">
-          <p class="ttl">Clients and transactions</p>
-          <div style="display:grid;gap:12px;margin-top:12px">
-            <div><div class="hd cap"><span>Clients 2021 → 2026</span><b class="num" style="color:var(--fg)">25,000 → 40,000+</b></div><div class="meter"><i style="width:62.5%"></i></div></div>
-            <div><div class="hd cap"><span>Transactions 2021 → 2026</span><b class="num" style="color:var(--fg)">110,000 → 250,000+</b></div><div class="meter"><i style="width:44%;background-color:var(--yellow)"></i></div></div>
-          </div>
-          <p class="note">The bar shows the 2021 figure as a share of today's. Sources: <a href="#s9">9</a>, <a href="#s21">21</a>.</p>
-        </section>
-      </div>
-
-      <section class="card s6" id="tim">
-        <p class="ttl">Team and owners</p>
-        <div class="cap">Based on the court register and public profiles</div>
-        <div class="people" style="margin-top:14px">
-          <div class="person"><span class="av" style="background:var(--green)">NŠ</span><div><b>Nikola Škorić</b><span>Co-founder, managing director and co-owner. Spent seven years in the nuclear industry before Electrocoin; has worked with cryptography since 2011. Co-founder of the Croatian Association for Blockchain and Cryptocurrencies (UBIK) and chair of the Money Motion conference.<sup><a href="#s9">9</a></sup><sup><a href="#s23">23</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
-          <div class="person"><span class="av" style="background:var(--yellow)">MM</span><div><b>Marin Maržić</b><span>Co-founder, COO, authorised signatory (prokurist) and co-owner. Led the development of the platform's user experience and security.<sup><a href="#s8">8</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
-          <div class="person"><span class="av" style="background:var(--orange)">IP</span><div><b>Ivan Pekarik</b><span>Head of Operations.<sup><a href="#s22">22</a></sup></span></div></div>
-        </div>
-        <p class="note">The third owner is EC Production Projects d.o.o.<sup><a href="#s8">8</a></sup></p>
-        <blockquote>“Merchants are never exposed to cryptocurrencies or their volatility.”<cite>Nikola Škorić to JaTrgovac, 2022<sup><a href="#s24">24</a></sup></cite></blockquote>
-      </section>
-
-      <section class="card s6">
         <p class="ttl">Company details</p>
         <dl class="facts">
           <dt>Legal name</dt><dd>ELECTROCOIN d.o.o. za usluge</dd>
@@ -428,6 +426,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
         <p class="note">From the official financial statements<sup><a href="#s7">7</a></sup>. Revenue in the statements is far lower than turnover because, as I infer, it includes only the company's earnings and not the value of the assets exchanged.</p>
       </section>
+      </div>
+      
 
       <section class="card s12" id="video">
         <div class="hd"><div><p class="ttl">Videos and interviews</p><div class="cap">Nikola Škorić on Electrocoin, cryptocurrencies and regulation</div></div><a class="pill" href="https://www.youtube.com/results?search_query=Nikola+%C5%A0kori%C4%87+Electrocoin" target="_blank" rel="noopener">All videos ↗</a></div>
@@ -546,7 +546,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
       </section>
 
-      <section class="card s6" id="gotovina">
+      <div class="s6 colstack">
+        <section class="card" id="gotovina">
         <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v9h14v-9M9 19v-5h6v5"/></svg></span><div><p class="ttl">3. Cash, post offices and exchange offices</p><div class="cap">Crypto for those who prefer to pay at the counter</div></div></div>
         <p>Electrocoin is the infrastructure behind Croatian Post's crypto services. Since December 2019 crypto can be sold for cash, and since November 2021 also bought, at more than 50 post offices in every county, for 11 cryptocurrencies<sup><a href="#s17">17</a></sup><sup><a href="#s18">18</a></sup>. In total, in 2022 crypto could be bought or sold at more than 400 physical locations<sup><a href="#s24">24</a></sup>.</p>
         <ul class="ul">
@@ -555,8 +556,20 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><span>Three editions of Croatian Post crypto stamps (3,000 pieces), payable only in crypto, sold out<sup><a href="#s18">18</a></sup></span></li>
         </ul>
       </section>
-
-      <section class="card s6" id="b2b">
+        <section class="card">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></span><div><p class="ttl">Education and community</p><div class="cap">Alongside the business services</div></div></div>
+        <ul class="ul">
+          <li><span>Consulting and education on crypto and blockchain<sup><a href="#s22">22</a></sup></span></li>
+          <li><span>Training civil servants on crypto-assets (2024)<sup><a href="#s13">13</a></sup></span></li>
+          <li><span>Co-founding the Association for Blockchain and Cryptocurrencies (UBIK)<sup><a href="#s24">24</a></sup></span></li>
+          <li><span>Money Motion fintech conference at the Zagreb Fair, since 2023<sup><a href="#s23">23</a></sup><sup><a href="#s22">22</a></sup></span></li>
+          <li><span>Panels with government institutions and advocacy for simpler licensing of fintech companies<sup><a href="#s11">11</a></sup><sup><a href="#s24">24</a></sup></span></li>
+        </ul>
+        <p class="note">The company's long-term goal is crypto in every area of the economy, with insurance as the "end goal"; banking is not on the roadmap<sup><a href="#s10">10</a></sup>.</p>
+      </section>
+      </div>
+      <div class="s6 colstack">
+        <section class="card" id="b2b">
         <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M19 21V10M9 21v-7M15 21v-7M3 10l9-6 9 6"/></svg></span><div><p class="ttl">4. Infrastructure for banks and payment institutions</p><div class="cap">The growth direction for the next five years</div></div></div>
         <p>Electrocoin is developing a crypto trading module that banks can build into their apps, modelled on Revolut's offering. Banks' interest grew after the Money Motion 2024 conference.<sup><a href="#s11">11</a></sup> Škorić reports growing interest in crypto payments from merchants, payment service providers, banks and fintech companies<sup><a href="#s23">23</a></sup>.</p>
         <ul class="ul">
@@ -572,8 +585,12 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><span>Competitors are moving faster: Aircash has offered crypto through Bitpanda since 2025<sup><a href="#s81">81</a></sup>, and the Raiffeisen group signed with Bitpanda for 11 markets in September 2026<sup><a href="#s82">82</a></sup>.</span></li>
         </ul>
       </section>
+      </div>
+      
 
-      <section class="card s7" id="licenca">
+      
+
+      <section class="card s12" id="licenca">
         <div class="svc-h"><span class="svc-ico" style="background:var(--yellow)"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><p class="ttl">5. Regulation: MiCA licence from HANFA</p><div class="cap">First entry in the register of crypto-asset service providers</div></div></div>
         <p>Until 2026, Electrocoin operated as a registered virtual asset service provider (VASP) under the anti-money laundering act. On 9 April 2026, HANFA's Management Board authorised it to operate under Regulation (EU) 2023/1114, the first company in Croatia to receive such authorisation<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup>. Other VASPs must obtain a licence by 1 July 2026<sup><a href="#s1">1</a></sup>; of the 16 registered companies, seven remain on the market<sup><a href="#s12">12</a></sup>.</p>
         <p class="eyebrow" style="margin:14px 0 0">Services under the MiCA licence: Electrocoin holds 3 of 10</p>
@@ -594,17 +611,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <div class="eea" id="eea"></div>
       </section>
 
-      <section class="card s5">
-        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></span><div><p class="ttl">Education and community</p><div class="cap">Alongside the business services</div></div></div>
-        <ul class="ul">
-          <li><span>Consulting and education on crypto and blockchain<sup><a href="#s22">22</a></sup></span></li>
-          <li><span>Training civil servants on crypto-assets (2024)<sup><a href="#s13">13</a></sup></span></li>
-          <li><span>Co-founding the Association for Blockchain and Cryptocurrencies (UBIK)<sup><a href="#s24">24</a></sup></span></li>
-          <li><span>Money Motion fintech conference at the Zagreb Fair, since 2023<sup><a href="#s23">23</a></sup><sup><a href="#s22">22</a></sup></span></li>
-          <li><span>Panels with government institutions and advocacy for simpler licensing of fintech companies<sup><a href="#s11">11</a></sup><sup><a href="#s24">24</a></sup></span></li>
-        </ul>
-        <p class="note">The company's long-term goal is crypto in every area of the economy, with insurance as the "end goal"; banking is not on the roadmap<sup><a href="#s10">10</a></sup>.</p>
-      </section>
+      
     </div>
 
     <!-- ============ PAGE 3: GROWTH ============ -->
@@ -706,7 +713,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
       </section>
 
-      <section class="card s7" id="prijedlozi">
+      <div class="s8 colstack">
+        <section class="card" id="prijedlozi">
         <p class="ttl">4. What Electrocoin could add</p>
         <div class="cap">Ranked by impact relative to effort; the assessment is mine</div>
         <ol class="ideas">
@@ -719,8 +727,9 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><b>Crypto ATMs.</b> With 15 ATMs, Kriptomat/Bitblock achieved 85% volume growth<sup><a href="#s40">40</a></sup>. Electrocoin has post offices and exchange offices, so ATMs are a supplement rather than a priority.</li>
         </ol>
       </section>
-
-      <section class="card s5">
+      </div>
+      <div class="s4 colstack">
+        <section class="card">
         <p class="ttl">5. Phased plan</p>
         <div class="cap">Proposed sequence</div>
         <ol class="tl">
@@ -730,6 +739,10 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </ol>
         <p class="note">This is my proposed sequence based on research, not a company plan.</p>
       </section>
+      </div>
+      
+
+      
     </div>
 
     <!-- ============ PAGE 4: MICA LICENCE ============ -->
@@ -814,7 +827,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <p class="note">The badge colour is my assessment of how well each service would suit Electrocoin: green means a good fit with the existing business, yellow a moderate one, and orange a big step.</p>
       </section>
 
-      <section class="card s7" id="mica-kako">
+      <section class="card s12" id="mica-kako">
         <p class="ttl">3. How to obtain a licence for the other services</p>
         <div class="cap">An extension of the existing licence, not a new application from scratch</div>
         <ol class="tl">
@@ -828,7 +841,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <p class="note">I was unable to confirm the amount of HANFA's application fee; it is set by the Ordinance on the type and amount of fees (OG 157/2025)<sup><a href="#s67">67</a></sup>. The 3 to 5 month estimate is my own.</p>
       </section>
 
-      <section class="card s5">
+      <div class="s6 colstack">
+        <section class="card">
         <p class="ttl">4. What would make sense first</p>
         <div class="cap">My assessment, not the company's plan</div>
         <ol class="ideas">
@@ -839,8 +853,9 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><b>KI2, exchange.</b> The biggest step: new systems, admission rules and capital Class 3. It only makes sense if Electrocoin wants to become a regional trading venue.</li>
         </ol>
       </section>
-
-      <section class="card s12">
+      </div>
+      <div class="s6 colstack">
+        <section class="card">
         <p class="ttl">Capital classes under MiCA</p>
         <div class="tw" style="margin-top:12px">
           <table>
@@ -854,6 +869,10 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
         <p class="note">Annex IV of the MiCA Regulation. An insurance policy or guarantee may also be used in part instead of capital (Art. 67(4))<sup><a href="#s63">63</a></sup>.</p>
       </section>
+      </div>
+      
+
+      
     </div>
 
     <section class="card" id="izvori">

@@ -328,7 +328,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
       <section class="card s3 kpi"><div class="cap">Zaposlenih (2025.)</div><div class="big num">28</div><div class="up">7 zaposlenih 2017.<sup><a href="#s10">10</a></sup></div></section>
       <section class="card s3 kpi"><div class="cap">MiCA licenca za poslovanje</div><div class="big num">30 država</div><div class="up">cijeli EGP<sup><a href="#s6">6</a></sup></div></section>
 
-      <section class="card s7" id="razvoj">
+      <div class="s7 colstack">
+        <section class="card" id="razvoj">
         <div class="hd"><div><p class="ttl">Razvoj kroz godine</p><div class="cap">Ključni trenuci od ideje do licence</div></div>
           <div class="legend"><span><i class="sw" style="background:var(--green)"></i>Prekretnica</span><span><i class="sw" style="background:var(--yellow)"></i>Regulacija</span></div></div>
         <ol class="tl">
@@ -346,18 +347,37 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li class="m"><span class="yr">2026.</span><span class="dot"></span><div><h3>Prva MiCA licenca u Hrvatskoj</h3><p>Uprava HANFA-e 9. travnja 2026. odobrava Electrocoinu rad kao pružatelju usluga kriptoimovine (CASP). Tvrtka je prvi upis u registar, a s MiCA licencom za poslovanje usluge nudi u 30 država EGP-a, među njima i u Francuskoj od svibnja 2026.<sup><a href="#s1">1</a></sup><sup><a href="#s5">5</a></sup><sup><a href="#s6">6</a></sup></p></div></li>
         </ol>
       </section>
-
-      <div class="s5" style="display:grid;gap:16px;align-content:start;min-width:0">
+        <section class="card" id="tim">
+        <p class="ttl">Tim i vlasnici</p>
+        <div class="cap">Prema sudskom registru i javnim profilima</div>
+        <div class="people" style="margin-top:14px">
+          <div class="person"><span class="av" style="background:var(--green)">NŠ</span><div><b>Nikola Škorić</b><span>Suosnivač, direktor i suvlasnik. Prije Electrocoina sedam godina u nuklearnoj industriji; kriptografijom se bavi od 2011. Suosnivač Udruge za blockchain i kriptovalute (UBIK) i predsjedatelj konferencije Money Motion.<sup><a href="#s9">9</a></sup><sup><a href="#s23">23</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--yellow)">MM</span><div><b>Marin Maržić</b><span>Suosnivač, COO, prokurist i suvlasnik. Vodio razvoj korisničkog iskustva i sigurnosti platforme.<sup><a href="#s8">8</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
+          <div class="person"><span class="av" style="background:var(--orange)">IP</span><div><b>Ivan Pekarik</b><span>Voditelj operacija.<sup><a href="#s22">22</a></sup></span></div></div>
+        </div>
+        <p class="note">Treći vlasnik je EC Production Projects d.o.o.<sup><a href="#s8">8</a></sup></p>
+        <blockquote>„Trgovci nikada nisu izloženi kriptovalutama niti njihovoj volatilnosti.“<cite>Nikola Škorić za JaTrgovac, 2022.<sup><a href="#s24">24</a></sup></cite></blockquote>
+      </section>
+        <section class="card">
+          <div class="hd"><div><p class="ttl">Broj zaposlenih</p><div class="cap">Od sedam ljudi do tima od 28</div></div></div>
+          <svg class="chart" id="ch-staff" viewBox="0 0 400 180" role="img" aria-label="Zaposleni: 2017. 7, 2021. 18, 2022. 28, 2023. 29, 2024. 27, 2025. 28"></svg>
+          <p class="note">Izvori: <a href="#s10">10</a>, <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s7">7</a>.</p>
+        </section>
+        <section class="card">
+          <p class="ttl">Klijenti i transakcije</p>
+          <div style="display:grid;gap:12px;margin-top:12px">
+            <div><div class="hd cap"><span>Klijenti 2021. → 2026.</span><b class="num" style="color:var(--fg)">25.000 → 40.000+</b></div><div class="meter"><i style="width:62.5%"></i></div></div>
+            <div><div class="hd cap"><span>Transakcije 2021. → 2026.</span><b class="num" style="color:var(--fg)">110.000 → 250.000+</b></div><div class="meter"><i style="width:44%;background-color:var(--yellow)"></i></div></div>
+          </div>
+          <p class="note">Traka pokazuje brojku iz 2021. kao udio današnje. Izvori: <a href="#s9">9</a>, <a href="#s21">21</a>.</p>
+        </section>
+      </div>
+      <div class="s5 colstack">
         <section class="card">
           <div class="hd"><div><p class="ttl">Promet kroz godine</p><div class="cap">Milijuni eura, vrijednost razmijenjene imovine (bruto)</div></div></div>
           <div class="legend" style="margin-top:10px"><span><i class="sw" style="background:var(--green)"></i>Podatak (Fina ili mediji)</span><span><i class="sw est"></i>Procjena</span></div>
           <svg class="chart lg many" id="ch-turnover" viewBox="0 0 520 260" role="img" aria-label="Promet u milijunima eura: 2014. procjena oko 0,03, 2015. 0,46, 2016. 1,35, 2017. 27,5, 2018. 27,6, 2019. 34,5, 2020. 43,8, 2021. 79,6, 2022. 76, 2023. procjena oko 64, 2024. procjena oko 67, 2025. procjena oko 59"></svg>
           <p class="note"><b>Procjene:</b> 2014. je izvedena iz Bloombergova podatka da je prihod do 2017. narastao 932 puta<sup><a href="#s69">69</a></sup>. Za 2023.–2025. tvrtka objavljuje samo zaradu, pa promet procjenjujem uz pretpostavku da zadrži oko 2 % prometa (marža 1–2 %, PayCekova naknada 2–2,5 %)<sup><a href="#s56">56</a></sup><sup><a href="#s70">70</a></sup>. Provjera: prema Hanfi su sve hrvatske kripto mjenjačnice zajedno u siječnju i veljači 2024. imale 10,9 i 12,4 mil. € prometa<sup><a href="#s71">71</a></sup>, oko 130–150 mil. € godišnje, pa bi Electrocoin s procijenjenih ~65 mil. € imao oko pola tržišta. Do 2022. promet je jednak bruto prihodu jer je prihod uključivao vrijednost prodanog kripta. Kune preračunate po 7,5345. Izvori: <a href="#s68">68</a>, <a href="#s69">69</a>, <a href="#s52">52</a>, <a href="#s51">51</a>, <a href="#s54">54</a>, <a href="#s7">7</a>.</p>
-        </section>
-        <section class="card">
-          <div class="hd"><div><p class="ttl">Broj zaposlenih</p><div class="cap">Od sedam ljudi do tima od 28</div></div></div>
-          <svg class="chart" id="ch-staff" viewBox="0 0 400 180" role="img" aria-label="Zaposleni: 2017. 7, 2021. 18, 2022. 28, 2023. 29, 2024. 27, 2025. 28"></svg>
-          <p class="note">Izvori: <a href="#s10">10</a>, <a href="#s9">9</a>, <a href="#s24">24</a>, <a href="#s7">7</a>.</p>
         </section>
         <section class="card">
           <div class="hd"><div><p class="ttl">Prihod kroz godine</p><div class="cap">Zarada tvrtke (neto), milijuni eura</div></div></div>
@@ -385,28 +405,6 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <p class="note">Procjene za 2015.–2022. izračunate su iz prometa u grafu „Promet kroz godine”. Za 2014. podatak nije dostupan.</p>
         </section>
         <section class="card">
-          <p class="ttl">Klijenti i transakcije</p>
-          <div style="display:grid;gap:12px;margin-top:12px">
-            <div><div class="hd cap"><span>Klijenti 2021. → 2026.</span><b class="num" style="color:var(--fg)">25.000 → 40.000+</b></div><div class="meter"><i style="width:62.5%"></i></div></div>
-            <div><div class="hd cap"><span>Transakcije 2021. → 2026.</span><b class="num" style="color:var(--fg)">110.000 → 250.000+</b></div><div class="meter"><i style="width:44%;background-color:var(--yellow)"></i></div></div>
-          </div>
-          <p class="note">Traka pokazuje brojku iz 2021. kao udio današnje. Izvori: <a href="#s9">9</a>, <a href="#s21">21</a>.</p>
-        </section>
-      </div>
-
-      <section class="card s6" id="tim">
-        <p class="ttl">Tim i vlasnici</p>
-        <div class="cap">Prema sudskom registru i javnim profilima</div>
-        <div class="people" style="margin-top:14px">
-          <div class="person"><span class="av" style="background:var(--green)">NŠ</span><div><b>Nikola Škorić</b><span>Suosnivač, direktor i suvlasnik. Prije Electrocoina sedam godina u nuklearnoj industriji; kriptografijom se bavi od 2011. Suosnivač Udruge za blockchain i kriptovalute (UBIK) i predsjedatelj konferencije Money Motion.<sup><a href="#s9">9</a></sup><sup><a href="#s23">23</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
-          <div class="person"><span class="av" style="background:var(--yellow)">MM</span><div><b>Marin Maržić</b><span>Suosnivač, COO, prokurist i suvlasnik. Vodio razvoj korisničkog iskustva i sigurnosti platforme.<sup><a href="#s8">8</a></sup><sup><a href="#s10">10</a></sup><sup><a href="#s24">24</a></sup></span></div></div>
-          <div class="person"><span class="av" style="background:var(--orange)">IP</span><div><b>Ivan Pekarik</b><span>Voditelj operacija.<sup><a href="#s22">22</a></sup></span></div></div>
-        </div>
-        <p class="note">Treći vlasnik je EC Production Projects d.o.o.<sup><a href="#s8">8</a></sup></p>
-        <blockquote>„Trgovci nikada nisu izloženi kriptovalutama niti njihovoj volatilnosti.“<cite>Nikola Škorić za JaTrgovac, 2022.<sup><a href="#s24">24</a></sup></cite></blockquote>
-      </section>
-
-      <section class="card s6">
         <p class="ttl">Podaci o tvrtki</p>
         <dl class="facts">
           <dt>Pravni naziv</dt><dd>ELECTROCOIN d.o.o. za usluge</dd>
@@ -429,6 +427,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
         <p class="note">Iz službenih financijskih izvještaja<sup><a href="#s7">7</a></sup>. Prihod u izvještajima je znatno manji od prometa jer, kako zaključujem, uključuje samo zaradu tvrtke, a ne vrijednost razmijenjene imovine.</p>
       </section>
+      </div>
+      
 
       <section class="card s12" id="video">
         <div class="hd"><div><p class="ttl">Video i intervjui</p><div class="cap">Nikola Škorić o Electrocoinu, kriptovalutama i regulaciji</div></div><a class="pill" href="https://www.youtube.com/results?search_query=Nikola+%C5%A0kori%C4%87+Electrocoin" target="_blank" rel="noopener">Svi videi ↗</a></div>
@@ -547,7 +547,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
       </section>
 
-      <section class="card s6" id="gotovina">
+      <div class="s6 colstack">
+        <section class="card" id="gotovina">
         <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v9h14v-9M9 19v-5h6v5"/></svg></span><div><p class="ttl">3. Gotovina, pošta i mjenjačnice</p><div class="cap">Kripto za one koji radije plaćaju na šalteru</div></div></div>
         <p>Electrocoin je infrastruktura iza kripto usluga Hrvatske pošte. Od prosinca 2019. kriptovalute se mogu prodati za gotovinu, a od studenog 2021. i kupiti u više od 50 poštanskih ureda u svim županijama, za 11 kriptovaluta<sup><a href="#s17">17</a></sup><sup><a href="#s18">18</a></sup>. Ukupno je 2022. kripto bilo moguće kupiti ili prodati na više od 400 fizičkih lokacija<sup><a href="#s24">24</a></sup>.</p>
         <ul class="ul">
@@ -556,8 +557,20 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><span>Tri izdanja kripto maraka Hrvatske pošte (3.000 komada) plativa samo kriptovalutom, rasprodana<sup><a href="#s18">18</a></sup></span></li>
         </ul>
       </section>
-
-      <section class="card s6" id="b2b">
+        <section class="card">
+        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></span><div><p class="ttl">Edukacija i zajednica</p><div class="cap">Uz poslovne usluge</div></div></div>
+        <ul class="ul">
+          <li><span>Savjetovanje i edukacija o kriptovalutama i blockchainu<sup><a href="#s22">22</a></sup></span></li>
+          <li><span>Edukacija državnih službenika o kriptoimovini (2024.)<sup><a href="#s13">13</a></sup></span></li>
+          <li><span>Suosnivanje Udruge za blockchain i kriptovalute (UBIK)<sup><a href="#s24">24</a></sup></span></li>
+          <li><span>Fintech konferencija Money Motion na Zagrebačkom velesajmu, od 2023.<sup><a href="#s23">23</a></sup><sup><a href="#s22">22</a></sup></span></li>
+          <li><span>Paneli s državnim institucijama i zalaganje za jednostavnije licenciranje fintech tvrtki<sup><a href="#s11">11</a></sup><sup><a href="#s24">24</a></sup></span></li>
+        </ul>
+        <p class="note">Dugoročni cilj tvrtke je kripto u svim područjima gospodarstva, s osiguranjem kao „završnim ciljem“; bankarstvo nije u planu<sup><a href="#s10">10</a></sup>.</p>
+      </section>
+      </div>
+      <div class="s6 colstack">
+        <section class="card" id="b2b">
         <div class="svc-h"><span class="svc-ico" style="background:var(--green)"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M19 21V10M9 21v-7M15 21v-7M3 10l9-6 9 6"/></svg></span><div><p class="ttl">4. Infrastruktura za banke i platne institucije</p><div class="cap">Smjer rasta za idućih pet godina</div></div></div>
         <p>Electrocoin razvija modul za trgovanje kriptovalutama koji banke ugrađuju u svoje aplikacije, po uzoru na Revolutovu ponudu. Interes banaka porastao je nakon konferencije Money Motion 2024.<sup><a href="#s11">11</a></sup> Škorić bilježi sve veći interes trgovaca, pružatelja platnih usluga, banaka i fintech tvrtki za kripto naplatu<sup><a href="#s23">23</a></sup>.</p>
         <ul class="ul">
@@ -573,8 +586,12 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><span>Konkurencija je brža: Aircash od 2025. nudi kripto preko Bitpande<sup><a href="#s81">81</a></sup>, a grupa Raiffeisen u rujnu 2026. potpisala je s Bitpandom za 11 tržišta<sup><a href="#s82">82</a></sup>.</span></li>
         </ul>
       </section>
+      </div>
+      
 
-      <section class="card s7" id="licenca">
+      
+
+      <section class="card s12" id="licenca">
         <div class="svc-h"><span class="svc-ico" style="background:var(--yellow)"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><p class="ttl">5. Regulacija: MiCA licenca HANFA-e</p><div class="cap">Prvi upis u registar pružatelja usluga kriptoimovine</div></div></div>
         <p>Do 2026. Electrocoin je poslovao kao registrirani pružatelj usluga virtualne imovine (VASP) prema zakonu o sprječavanju pranja novca. Uprava HANFA-e 9. travnja 2026. odobrila mu je rad prema uredbi (EU) 2023/1114, kao prvoj tvrtki u Hrvatskoj<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup>. Ostali VASP-ovi moraju licencu ishoditi do 1. srpnja 2026.<sup><a href="#s1">1</a></sup>; od 16 registriranih tvrtki na tržištu ih je ostalo sedam<sup><a href="#s12">12</a></sup>.</p>
         <p class="eyebrow" style="margin:14px 0 0">Usluge iz MiCA licence: Electrocoin ima 3 od 10</p>
@@ -595,17 +612,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <div class="eea" id="eea"></div>
       </section>
 
-      <section class="card s5">
-        <div class="svc-h"><span class="svc-ico" style="background:var(--orange)"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></span><div><p class="ttl">Edukacija i zajednica</p><div class="cap">Uz poslovne usluge</div></div></div>
-        <ul class="ul">
-          <li><span>Savjetovanje i edukacija o kriptovalutama i blockchainu<sup><a href="#s22">22</a></sup></span></li>
-          <li><span>Edukacija državnih službenika o kriptoimovini (2024.)<sup><a href="#s13">13</a></sup></span></li>
-          <li><span>Suosnivanje Udruge za blockchain i kriptovalute (UBIK)<sup><a href="#s24">24</a></sup></span></li>
-          <li><span>Fintech konferencija Money Motion na Zagrebačkom velesajmu, od 2023.<sup><a href="#s23">23</a></sup><sup><a href="#s22">22</a></sup></span></li>
-          <li><span>Paneli s državnim institucijama i zalaganje za jednostavnije licenciranje fintech tvrtki<sup><a href="#s11">11</a></sup><sup><a href="#s24">24</a></sup></span></li>
-        </ul>
-        <p class="note">Dugoročni cilj tvrtke je kripto u svim područjima gospodarstva, s osiguranjem kao „završnim ciljem“; bankarstvo nije u planu<sup><a href="#s10">10</a></sup>.</p>
-      </section>
+      
     </div>
 
     <!-- ============ STRANICA 3: RAST ============ -->
@@ -707,7 +714,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
       </section>
 
-      <section class="card s7" id="prijedlozi">
+      <div class="s8 colstack">
+        <section class="card" id="prijedlozi">
         <p class="ttl">4. Što Electrocoin može dodati</p>
         <div class="cap">Poredano po omjeru učinka i truda; procjena je moja</div>
         <ol class="ideas">
@@ -720,8 +728,9 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><b>Kripto bankomati.</b> Kriptomat/Bitblock je s 15 bankomata ostvario rast volumena od 85%<sup><a href="#s40">40</a></sup>. Electrocoin ima poštu i mjenjačnice, pa su bankomati dopuna, a ne prioritet.</li>
         </ol>
       </section>
-
-      <section class="card s5">
+      </div>
+      <div class="s4 colstack">
+        <section class="card">
         <p class="ttl">5. Plan po fazama</p>
         <div class="cap">Prijedlog redoslijeda</div>
         <ol class="tl">
@@ -731,6 +740,10 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </ol>
         <p class="note">Ovo je moj prijedlog redoslijeda na temelju istraživanja, a ne plan tvrtke.</p>
       </section>
+      </div>
+      
+
+      
     </div>
 
     <!-- ============ STRANICA 4: MICA LICENCA ============ -->
@@ -815,7 +828,7 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <p class="note">Boja oznake je moja procjena koliko bi usluga odgovarala Electrocoinu: zelena znači dobar spoj s postojećim poslom, žuta srednji, a narančasta velik korak.</p>
       </section>
 
-      <section class="card s7" id="mica-kako">
+      <section class="card s12" id="mica-kako">
         <p class="ttl">3. Kako doći do licence za ostale usluge</p>
         <div class="cap">Proširenje postojeće licence, a ne novi zahtjev od početka</div>
         <ol class="tl">
@@ -829,7 +842,8 @@ table.matrix td:nth-child(2){background:var(--soft)}
         <p class="note">Iznos Hanfine naknade za zahtjev nisam uspio potvrditi; propisan je Pravilnikom o vrsti i visini naknada (NN 157/2025)<sup><a href="#s67">67</a></sup>. Procjena trajanja od 3 do 5 mjeseci je moja.</p>
       </section>
 
-      <section class="card s5">
+      <div class="s6 colstack">
+        <section class="card">
         <p class="ttl">4. Što bi imalo smisla prvo</p>
         <div class="cap">Moja procjena, ne plan tvrtke</div>
         <ol class="ideas">
@@ -840,8 +854,9 @@ table.matrix td:nth-child(2){background:var(--soft)}
           <li><b>KI2, burza.</b> Najveći korak: novi sustavi, pravila uvrštenja i 3. razred kapitala. Ima smisla tek ako Electrocoin želi postati regionalno mjesto trgovanja.</li>
         </ol>
       </section>
-
-      <section class="card s12">
+      </div>
+      <div class="s6 colstack">
+        <section class="card">
         <p class="ttl">Razredi kapitala prema MiCA-i</p>
         <div class="tw" style="margin-top:12px">
           <table>
@@ -855,6 +870,10 @@ table.matrix td:nth-child(2){background:var(--soft)}
         </div>
         <p class="note">Prilog IV. Uredbe MiCA. Umjesto kapitala može se dijelom koristiti i polica osiguranja ili jamstvo (čl. 67. st. 4.)<sup><a href="#s63">63</a></sup>.</p>
       </section>
+      </div>
+      
+
+      
     </div>
 
     <section class="card" id="izvori">
